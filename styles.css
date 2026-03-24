@@ -1,12 +1,15 @@
 /* ============================================================
    CASTLETON DENTAL PRACTICE — styles.css
-   Draft concept v1.0 | ryanbishop.co.uk
+   Draft concept v2.0 | ryanbishop.co.uk
    
    STATUS: Draft concept — subject to change pending:
-   - Client approval of style guide v1.0
+   - Client approval of style guide v2.0
    - Final font confirmation (--font-primary placeholder)
    - Final logo files (SVG/EPS)
-   - Brass accent confirmation (#B5935A)
+   
+   PALETTE: Updated March 2026 following client review.
+   Mint family replaced with warm olive and linen tones.
+   Brass accent confirmed.
    
    ARCHITECTURE: Single-file CSS, mobile-first
    All design tokens defined as custom properties in :root
@@ -21,17 +24,17 @@
 
 :root {
 
-  /* ── Colour Palette (extracted from logo, approved in style guide v1.0) ── */
-  --color-primary:        #7ccba6;  /* Arsenic — door, wordmark */
-  --color-primary-dark:   #31694c;  /* Deep Forest — CTAs, nav, headings */
-  --color-primary-mid:    #77b197;  /* Sage — secondary actions, hover */
-  --color-primary-light:  #a3d2bd;  /* Soft Mint — tints, card borders */
-  --color-bg:             #ebfaf4;  /* Off-White Mint — page background */
-  --color-ink:            #1b1c17;  /* Ink — primary body text */
-  --color-charcoal:       #4b4b46;  /* Charcoal — secondary text */
-  --color-stone:          #a3a49f;  /* Stone — captions, supporting text */
-  --color-pale-grey:      #c6c7c3;  /* Pale Grey — borders, dividers */
-  --color-brass:          #B5935A;  /* Brass — accent (proposed, TBC client) */
+  /* ── Colour Palette (v2.0 — approved style guide March 2026) ── */
+  --color-primary:        #8A8E75;  /* Olive — primary brand, Holly's preferred */
+  --color-primary-dark:   #68604D;  /* Dark Olive — CTAs, nav, active states */
+  --color-primary-mid:    #BEC5A4;  /* Sage Soft — secondary actions, hover */
+  --color-primary-light:  #D5C7AD;  /* Sand — warm neutral mid, tints */
+  --color-bg:             #F1EAD8;  /* Linen — page background, calm canvas */
+  --color-ink:            #1b1c17;  /* Ink — primary body text (unchanged) */
+  --color-charcoal:       #4b4b46;  /* Charcoal — secondary text (unchanged) */
+  --color-stone:          #a3a49f;  /* Stone — captions, supporting text (unchanged) */
+  --color-pale-grey:      #c6c7c3;  /* Pale Grey — borders, dividers (unchanged) */
+  --color-brass:          #B5935A;  /* Brass — accent, confirmed */
   --color-white:          #FFFFFF;
 
   /* ── Typography ─────────────────────────────────────────── */

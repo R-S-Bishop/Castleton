@@ -137,3 +137,6 @@ The map on the Contact page currently shows Google's standard red pin. To replac
 Send the API key securely — Ryan will implement the branded logo pin on the Contact page.
 
 > **Never share the API key publicly or commit it to GitHub.** The domain restriction in Step 5 ensures it can only be used on the Castleton website.
+
+
+Note: Ryan has changed the style.css folder to v2.0 of the client approved style guide
