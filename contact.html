@@ -72,10 +72,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Leaflet CSS (interactive map — no API key required) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
     <!-- Structured Data — Local Business -->
     <script type="application/ld+json">
     {
@@ -221,7 +217,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div>
             <div class="map-embed" style="margin-bottom:2rem;">
-              <div id="castleton-map"></div>
+              <iframe
+                src="https://maps.google.com/maps?q=Castleton+Dental+Practice,+11+Castle+Street,+Farnham,+GU9+7JA&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Castleton Dental Practice location on Google Maps">
+              </iframe>
             </div>
             <div class="booking-widget">
               <p class="label" style="margin-bottom:0.75rem;">Book Online</p>
@@ -337,54 +338,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   </script>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLcE=" crossorigin=""></script>
-
-  <!-- Castleton Map Initialisation -->
-  <script>
-    (function () {
-      var LAT  = 51.21435;
-      var LNG  = -0.79858;
-      var ZOOM = 16;
-
-      var map = L.map('castleton-map', {
-        center: [LAT, LNG],
-        zoom: ZOOM,
-        scrollWheelZoom: false,
-        zoomControl: true
-      });
-
-      /* OpenStreetMap tile layer — no API key required */
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-
-      /* Custom branded marker — Castleton logo in a speech-bubble pin */
-      var logoPin = L.divIcon({
-        className: 'cdp-pin',
-        html: '<div class="cdp-pin__bubble">' +
-                '<img src="images/castleton-logo.png" alt="Castleton Dental Practice">' +
-              '</div>' +
-              '<div class="cdp-pin__spike"></div>',
-        iconSize:    [156, 64],   /* total bounding box of the custom icon */
-        iconAnchor:  [78,  64],   /* spike tip = horizontal centre, bottom */
-        popupAnchor: [0,  -68]    /* popup opens above the bubble */
-      });
-
-      var marker = L.marker([LAT, LNG], { icon: logoPin }).addTo(map);
-
-      marker.bindPopup(
-        '<strong>Castleton Dental Practice</strong><br>' +
-        '11 Castle Street, Farnham<br>' +
-        'Surrey, GU9 7JA<br>' +
-        '<a href="tel:01252715576" style="color:#31694c;">01252 715576</a>'
-      );
-
-      /* Open popup by default so the info is immediately visible */
-      marker.openPopup();
-    })();
-  </script>
 </body>
 </html>
