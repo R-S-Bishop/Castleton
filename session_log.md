@@ -52,30 +52,27 @@ Follow-on session. Holly reviewing the staging site shared after Session 1. Focu
 
 ### Work Completed
 
-#### 1. `contact.html` — Interactive Leaflet.js map replacing broken Google Maps iframe
+#### 1. `contact.html` — Google Maps iframe with correct pin
 
-**Problem:** The previous `<iframe>` embed used a placeholder Maps URL with no valid place ID (`!1s0x0%3A0x0`), so no pin was ever rendered on load.
+**Problem:** The original `<iframe>` embed used a placeholder URL with no valid place ID (`!1s0x0%3A0x0`), so no pin was ever rendered on load.
 
-**Solution:** Replaced the iframe entirely with a [Leaflet.js](https://leafletjs.com/) interactive map backed by OpenStreetMap tiles. No Google Maps API key required.
+**Approach discussed:** Initially implemented Leaflet.js + OpenStreetMap with a custom logo marker. After review, reverted to a standard Google Maps iframe — simpler, no third-party dependencies, and more familiar/trusted by users.
 
-**Custom branded marker:**
-- Castleton logo (`images/castleton-logo.png`) displayed inside a white speech-bubble pin with a **deep forest green** (`#31694c`) border and downward-pointing spike
-- Pin anchored precisely to coordinates `51.21435, -0.79858` (11 Castle Street, Farnham)
-- Popup opens by default showing address and click-to-call `01252 715576`
-- Scroll-wheel zoom disabled (prevents accidental scroll-hijack on the contact page)
+**Solution:** Google Maps iframe using a business name + address query URL. Google resolves this to its own verified listing and drops the standard red pin automatically. No API key required.
 
-**CSS added to `styles.css`:**
-- `#castleton-map` — sets the Leaflet canvas to 320px height
-- `.cdp-pin`, `.cdp-pin__bubble`, `.cdp-pin__spike` — custom marker component
-- `.leaflet-popup-content-wrapper` — Leaflet popup styled to match brand typography
+```
+https://maps.google.com/maps?q=Castleton+Dental+Practice,+11+Castle+Street,+Farnham,+GU9+7JA&z=16&output=embed
+```
+
+**Note on custom logo pin:** Replacing Google's red pin with a branded logo marker requires the Google Maps JavaScript API (free tier, but needs a billing-enabled Google Cloud account). Deferred — can revisit if Holly requests it.
 
 **Files changed:**
 - `contact.html`
 - `styles.css`
 
-**Commit:** `Replace static map iframe with Leaflet.js interactive map with branded logo pin`
+**Commit:** `Revert to Google Maps iframe — remove Leaflet/OpenStreetMap implementation`
 
-> ⚠️ **Push required** — commit is staged locally. Push via GitHub Desktop or terminal (`git push origin main`) as SSH/token auth was not available in this session.
+> ⚠️ **Push required** — commits are staged locally. Push via GitHub Desktop or terminal (`git push origin main`) as SSH/token auth was not available in this session.
 
 ---
 
