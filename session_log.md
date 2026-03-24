@@ -96,5 +96,7 @@ The following remain open for future sessions:
 | Referral form build | Ryan | Pending |
 | Privacy Policy HTML page | Ryan | Pending |
 | Embedded Google Maps (contact + home) | Ryan | contact.html ✅ — home TBC |
+| Google Maps Place ID — retrieve from Maps embed (no login needed) and pass to Ryan to pin exactly to GBP listing | Holly / Ryan | Pending |
+| Google Business Profile — upload new building & team photography once available (mirrors website assets, boosts local SEO) | Holly | Pending — awaiting photography |
 
 ---
