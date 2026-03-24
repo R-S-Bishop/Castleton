@@ -59,6 +59,7 @@ The following remain open for future sessions:
 | LinkedIn account URL | Holly | Pending |
 | Final logo files (SVG/EPS) | Holly | In development |
 | Colour palette confirmation | Holly | Pending |
+| GBT Airflow Hygiene fee — not on Fee Guide PDF; confirm whether separate fee or sits under Hygienist line | Holly | Pending |
 | Referral form build | Ryan | Pending |
 | Privacy Policy HTML page | Ryan | Pending |
 | Embedded Google Maps (contact + home) | Ryan | Pending |
