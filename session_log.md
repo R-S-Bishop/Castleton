@@ -43,6 +43,42 @@ Created `images/` directory and copied the following as placeholders (logo in de
 
 ---
 
+## Session 2 — 24 March 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Follow-on session. Holly reviewing the staging site shared after Session 1. Focus on improving the contact page map embed.
+
+### Work Completed
+
+#### 1. `contact.html` — Interactive Leaflet.js map replacing broken Google Maps iframe
+
+**Problem:** The previous `<iframe>` embed used a placeholder Maps URL with no valid place ID (`!1s0x0%3A0x0`), so no pin was ever rendered on load.
+
+**Solution:** Replaced the iframe entirely with a [Leaflet.js](https://leafletjs.com/) interactive map backed by OpenStreetMap tiles. No Google Maps API key required.
+
+**Custom branded marker:**
+- Castleton logo (`images/castleton-logo.png`) displayed inside a white speech-bubble pin with a **deep forest green** (`#31694c`) border and downward-pointing spike
+- Pin anchored precisely to coordinates `51.21435, -0.79858` (11 Castle Street, Farnham)
+- Popup opens by default showing address and click-to-call `01252 715576`
+- Scroll-wheel zoom disabled (prevents accidental scroll-hijack on the contact page)
+
+**CSS added to `styles.css`:**
+- `#castleton-map` — sets the Leaflet canvas to 320px height
+- `.cdp-pin`, `.cdp-pin__bubble`, `.cdp-pin__spike` — custom marker component
+- `.leaflet-popup-content-wrapper` — Leaflet popup styled to match brand typography
+
+**Files changed:**
+- `contact.html`
+- `styles.css`
+
+**Commit:** `Replace static map iframe with Leaflet.js interactive map with branded logo pin`
+
+> ⚠️ **Push required** — commit is staged locally. Push via GitHub Desktop or terminal (`git push origin main`) as SSH/token auth was not available in this session.
+
+---
+
 ### Outstanding / TBC Items (from Content Mapping)
 The following remain open for future sessions:
 
@@ -62,6 +98,6 @@ The following remain open for future sessions:
 | GBT Airflow Hygiene fee — not on Fee Guide PDF; confirm whether separate fee or sits under Hygienist line | Holly | Pending |
 | Referral form build | Ryan | Pending |
 | Privacy Policy HTML page | Ryan | Pending |
-| Embedded Google Maps (contact + home) | Ryan | Pending |
+| Embedded Google Maps (contact + home) | Ryan | contact.html ✅ — home TBC |
 
 ---
