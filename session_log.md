@@ -98,5 +98,42 @@ The following remain open for future sessions:
 | Embedded Google Maps (contact + home) | Ryan | contact.html ✅ — home TBC |
 | Google Maps Place ID — retrieve from Maps embed (no login needed) and pass to Ryan to pin exactly to GBP listing | Holly / Ryan | ✅ Complete — Place ID: `0x48742daba0c2eb6d:0x4a77be4480f6da66` |
 | Google Business Profile — upload new building & team photography once available (mirrors website assets, boosts local SEO) | Holly | Pending — awaiting photography |
+| Google Maps custom logo pin — requires Maps JavaScript API key (see guide below) | Holly → Ryan | Pending |
 
 ---
+## Appendix — Google Maps Custom Logo Pin: Step-by-Step Guide for Holly
+
+The map on the Contact page currently shows Google's standard red pin. To replace it with the Castleton logo, a **Google Maps JavaScript API key** is needed. This is free for a site of this size — Google provides $200/month credit, and a dental practice website will use a tiny fraction of that.
+
+### What Holly needs to do
+
+**Step 1 — Create a Google Cloud project**
+1. Go to [console.cloud.google.com](https://console.cloud.google.com) and sign in with the practice's Google account (the same one used for Google Business Profile)
+2. Click **Select a project** (top left) → **New Project**
+3. Name it `Castleton Dental Website` → **Create**
+
+**Step 2 — Enable the Maps JavaScript API**
+1. In the left menu go to **APIs & Services → Library**
+2. Search for `Maps JavaScript API` → click it → **Enable**
+
+**Step 3 — Set up billing**
+1. Go to **Billing** in the left menu
+2. Link a credit/debit card — required by Google but the $200/month free credit means no charge for normal website traffic
+3. Google will not charge unless usage far exceeds the free tier (extremely unlikely for a dental practice)
+
+**Step 4 — Create an API key**
+1. Go to **APIs & Services → Credentials**
+2. Click **Create Credentials → API Key**
+3. Copy the key — it will look like: `AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`
+
+**Step 5 — Restrict the key (important for security)**
+1. Click on the key to edit it
+2. Under **Application restrictions** select **Websites**
+3. Add both: `https://www.castletondental.co.uk/*` and `https://castletondental.co.uk/*`
+4. Under **API restrictions** select **Restrict key** → choose `Maps JavaScript API`
+5. Click **Save**
+
+**Step 6 — Pass the key to Ryan**
+Send the API key securely — Ryan will implement the branded logo pin on the Contact page.
+
+> **Never share the API key publicly or commit it to GitHub.** The domain restriction in Step 5 ensures it can only be used on the Castleton website.
