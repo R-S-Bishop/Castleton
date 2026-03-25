@@ -76,6 +76,78 @@ https://maps.google.com/maps?q=Castleton+Dental+Practice,+11+Castle+Street,+Farn
 
 ---
 
+## Session 3 — 25 March 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Planning session via Claude (claude.ai). Focus on colour palette refinement following Holly's feedback on the staging site, referral form upgrade, and style guide versioning. No Claude Code used — all changes prepared for manual push via GitHub Desktop.
+
+### Work Completed
+
+#### 1. `styles.css` — Palette updated to v3.0
+
+Two palette iterations in this session, both driven by Holly's feedback:
+
+**v2.0 → changes from Holly's palette image:**
+Mint-based palette replaced entirely with warm olive and linen tones. Holly specifically flagged mint as "too NHS" in character.
+
+| Variable | v1.0 | v2.0 |
+|---|---|---|
+| `--color-primary` | `#7ccba6` Arsenic | `#8A8E75` Olive |
+| `--color-primary-dark` | `#31694c` Deep Forest | `#68604D` Dark Olive |
+| `--color-primary-mid` | `#77b197` Sage | `#BEC5A4` Sage Soft |
+| `--color-primary-light` | `#a3d2bd` Soft Mint | `#D5C7AD` Sand |
+| `--color-bg` | `#ebfaf4` Off-White Mint | `#F1EAD8` Linen |
+| `--color-brass` | `#B5935A` | `#B5935A` ✓ Confirmed |
+
+**v3.0 → Sage Soft and Dark Olive swapped in hierarchy:**
+Sage Soft (`#BEC5A4`) now governs navigation, CTAs, and active states. Dark Olive (`#68604D`) moves to secondary actions and hover states. Olive (`#8A8E75`) unchanged as primary brand colour.
+
+| Variable | v2.0 | v3.0 |
+|---|---|---|
+| `--color-primary-dark` | `#68604D` Dark Olive | `#BEC5A4` Sage Soft |
+| `--color-primary-mid` | `#BEC5A4` Sage Soft | `#68604D` Dark Olive |
+
+**Files changed:**
+- `styles.css`
+
+#### 2. `referrals.html` — Full referral form rebuild
+
+Rebuilt to match the structure of toothbeary.co.uk/referrals (provided as reference by Holly). Previous form replaced entirely.
+
+**Three-section layout:**
+- **Section 1 — Referring Practice:** Practice name, dentist name, email, phone, address
+- **Section 2 — Patient Details:** Name, DOB, phone, email, treatment type dropdown (all six confirmed referral categories), clinical notes, urgency selector
+- **Section 3 — Supporting Files:** Drag-and-drop file upload zone, accepts PDF/JPG/PNG up to 5MB, file list display
+
+**Additional features:**
+- Privacy consent checkbox with brass left border accent — required before submission
+- Honeypot spam prevention field
+- Brass-numbered section strip headers
+- Dark Olive sidebar listing accepted referral types with contact fallback
+- Async submission via Formspree — form hides on success, confirmation message shown
+- Graceful error handling with phone/email fallback
+
+**Important — Formspree dependency:**
+File uploads cannot be handled by GitHub Pages (static host only). Formspree provides the server layer. Dependency chain:
+
+> Holly confirms referral inbox email → Holly creates Formspree account (formspree.io, free tier) → Holly sends 8-character form ID to Ryan → Ryan replaces `TBC-FORMSPREE-ID` in `referrals.html` → Done
+
+**Files changed:**
+- `referrals.html`
+
+#### 3. `styles.css` — Social icon hover states confirmed
+Inline SVG icons (Instagram, Facebook, LinkedIn) in footer. Instagram links to confirmed `castletondental` account. Facebook and LinkedIn remain `href="#"` pending Holly confirmation.
+
+#### 4. Style Guide — v2.0 and v3.0 produced
+- **Castleton_Style_Guide_v2.docx** — warm olive/linen palette, visual preview page, change tracking table v1→v2, approval table
+- **Castleton_Style_Guide_v3.docx** — Sage Soft ↔ Dark Olive swap, change tracking table v2→v3, header/footer matched exactly to v2 reference file
+
+Both sent to Holly for approval.
+
+---
+
 ### Outstanding / TBC Items (from Content Mapping)
 The following remain open for future sessions:
 
@@ -91,11 +163,13 @@ The following remain open for future sessions:
 | Facebook account URL | Holly | Pending |
 | LinkedIn account URL | Holly | Pending |
 | Final logo files (SVG/EPS) | Holly | In development |
-| Colour palette confirmation | Holly | Pending |
+| Colour palette — Style Guide v3.0 | Holly | Pending approval |
 | GBT Airflow Hygiene fee — not on Fee Guide PDF; confirm whether separate fee or sits under Hygienist line | Holly | Pending |
-| Referral form build | Ryan | Pending |
+| Referral inbox email address | Holly | Pending — blocks Formspree setup |
+| Formspree account setup (free tier, formspree.io) | Holly → Ryan | Blocked — awaiting referral inbox email |
+| DentalHub — supply new Castleton logo once finalised | Holly → Ryan | Pending — awaiting final logo |
 | Privacy Policy HTML page | Ryan | Pending |
-| Embedded Google Maps (contact + home) | Ryan | contact.html ✅ — home TBC |
+| Embedded Google Maps — home page | Ryan | Pending |
 | Google Maps Place ID — retrieve from Maps embed (no login needed) and pass to Ryan to pin exactly to GBP listing | Holly / Ryan | ✅ Complete — Place ID: `0x48742daba0c2eb6d:0x4a77be4480f6da66` |
 | Google Business Profile — upload new building & team photography once available (mirrors website assets, boosts local SEO) | Holly | Pending — awaiting photography |
 | Google Maps custom logo pin — requires Maps JavaScript API key (see guide below) | Holly → Ryan | Pending |
@@ -138,5 +212,6 @@ Send the API key securely — Ryan will implement the branded logo pin on the Co
 
 > **Never share the API key publicly or commit it to GitHub.** The domain restriction in Step 5 ensures it can only be used on the Castleton website.
 
+---
 
-Note: Ryan has changed the style.css folder to v2.0 of the client approved style guide
+*Note: `styles.css` is at v3.0 per approved Style Guide v3.0 — March 2026.*
