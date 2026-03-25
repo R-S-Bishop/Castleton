@@ -32,6 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="description" content="Patient referrals accepted for implants, oral surgery, CBCT scanning, and IV sedation. Castleton Dental Practice, Farnham, Surrey.">
     <meta name="keywords" content="dental referrals Farnham, refer patient dentist Surrey, implant referral Farnham, oral surgery referral">
     <meta name="author" content="Castleton Dental Practice">
+
     <!-- STAGING ONLY — remove before launch -->
     <meta name="robots" content="noindex, nofollow">
 
@@ -44,27 +45,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.castletondental.co.uk/referrals.html">
     <meta property="og:title" content="Refer a Patient | Castleton Dental Practice, Farnham">
-    <meta property="og:description" content="Patient referrals accepted for implants, oral surgery, CBCT scanning, and IV sedation. Castleton Dental Practice, Farnham, Surrey.">
+    <meta property="og:description" content="Patient referrals accepted for implants, oral surgery, CBCT scanning, and IV sedation.">
     <meta property="og:image" content="https://www.castletondental.co.uk/images/og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.castletondental.co.uk/referrals.html">
     <meta property="twitter:title" content="Refer a Patient | Castleton Dental Practice, Farnham">
-    <meta property="twitter:description" content="Patient referrals accepted for implants, oral surgery, CBCT scanning, and IV sedation. Castleton Dental Practice, Farnham, Surrey.">
+    <meta property="twitter:description" content="Patient referrals accepted for implants, oral surgery, CBCT scanning, and IV sedation.">
     <meta property="twitter:image" content="https://www.castletondental.co.uk/images/og-image.jpg">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://www.castletondental.co.uk/referrals.html">
 
     <!-- Favicon -->
-    <!-- TBC: replace with Castleton favicons once logo finalised -->
     <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon64.png">
 
     <!-- Fonts -->
-    <!-- TBC: replace with confirmed Castleton font once approved in style guide -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Trebuchet+MS&display=swap" rel="stylesheet">
@@ -72,18 +71,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Structured Data — Local Business -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Dentist",
         "name": "Castleton Dental Practice",
-        "description": "Private dental care in Farnham, Surrey. Established 1973. General, cosmetic, restorative, implants, sedation, and facial aesthetics.",
         "url": "https://www.castletondental.co.uk/",
         "telephone": "01252715576",
-        "email": "info@castletondental.co.uk",
-        "foundingDate": "1973",
-        "priceRange": "££",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "11 Castle Street",
@@ -91,41 +86,252 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             "addressRegion": "Surrey",
             "postalCode": "GU9 7JA",
             "addressCountry": "GB"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 51.2144,
-            "longitude": -0.7985
-        },
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-                "opens": "08:30",
-                "closes": "17:00"
-            },
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Friday",
-                "opens": "08:00",
-                "closes": "13:30"
-            }
-        ],
-        "medicalSpecialty": [
-            "Dentistry",
-            "Oral Surgery",
-            "Cosmetic Dentistry",
-            "Dental Implantology"
-        ],
-        "sameAs": [
-            "https://www.instagram.com/castletondental/"
-        ]
+        }
     }
     </script>
+
+    <style>
+      /* ── Referral page styles ──────────────────────────────────────────── */
+
+      .form-section-strip {
+        background-color: var(--color-primary-dark);
+        color: var(--color-white);
+        padding: var(--space-3) var(--space-5);
+        border-radius: var(--border-radius-sm);
+        margin-bottom: var(--space-5);
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+      }
+
+      .section-number {
+        background-color: var(--color-brass);
+        color: var(--color-white);
+        font-family: var(--font-primary);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-bold);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .section-title {
+        font-family: var(--font-primary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-medium);
+        letter-spacing: var(--tracking-wide);
+        text-transform: uppercase;
+      }
+
+      .form-card {
+        background-color: var(--color-white);
+        border: 1px solid var(--color-primary-light);
+        border-radius: var(--border-radius);
+        padding: var(--space-6);
+        margin-bottom: var(--space-8);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: var(--space-4);
+        grid-template-columns: 1fr;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .form-group--full { grid-column: 1 / -1; }
+
+      .form-label {
+        font-family: var(--font-primary);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+        color: var(--color-charcoal);
+        letter-spacing: var(--tracking-wide);
+      }
+
+      .required { color: var(--color-brass); margin-left: 2px; }
+
+      .form-input,
+      .form-textarea,
+      .form-select {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        color: var(--color-ink);
+        background-color: var(--color-bg);
+        border: 1px solid var(--color-primary-light);
+        border-radius: var(--border-radius-sm);
+        padding: var(--space-3) var(--space-4);
+        transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        width: 100%;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: var(--color-primary-dark);
+        box-shadow: 0 0 0 3px rgba(104, 96, 77, 0.12);
+        background-color: var(--color-white);
+      }
+
+      .form-textarea {
+        min-height: 130px;
+        resize: vertical;
+        line-height: var(--leading-normal);
+      }
+
+      .form-select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2368604D' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+      }
+
+      /* File upload */
+      .file-upload-area {
+        position: relative;
+        border: 2px dashed var(--color-primary-light);
+        border-radius: var(--border-radius);
+        padding: var(--space-8) var(--space-6);
+        text-align: center;
+        cursor: pointer;
+        transition: border-color var(--transition-base), background-color var(--transition-base);
+        background-color: var(--color-bg);
+      }
+
+      .file-upload-area:hover,
+      .file-upload-area.dragover {
+        border-color: var(--color-primary-dark);
+        background-color: var(--color-white);
+      }
+
+      .file-upload-area input[type="file"] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+      }
+
+      .file-upload-icon { display: block; margin: 0 auto var(--space-3); color: var(--color-primary); }
+      .file-upload-title { font-family: var(--font-primary); font-size: var(--text-base); font-weight: var(--weight-medium); color: var(--color-primary-dark); margin-bottom: var(--space-1); }
+      .file-upload-hint { font-size: var(--text-sm); color: var(--color-stone); }
+
+      .file-list { margin-top: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); }
+
+      .file-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-sm);
+        color: var(--color-charcoal);
+        background-color: var(--color-bg);
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--border-radius-sm);
+        border: 1px solid var(--color-primary-light);
+      }
+
+      /* Consent */
+      .consent-row {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+        padding: var(--space-5);
+        background-color: var(--color-bg);
+        border: 1px solid var(--color-primary-light);
+        border-radius: var(--border-radius);
+        border-left: 3px solid var(--color-brass);
+        margin-bottom: var(--space-6);
+      }
+
+      .consent-row input[type="checkbox"] {
+        width: 18px; height: 18px;
+        accent-color: var(--color-primary-dark);
+        flex-shrink: 0; margin-top: 2px; cursor: pointer;
+      }
+
+      .consent-row label { font-size: var(--text-sm); color: var(--color-charcoal); line-height: var(--leading-normal); cursor: pointer; }
+      .consent-row label a { color: var(--color-primary-dark); text-decoration: underline; }
+
+      /* Accepts panel */
+      .accepts-panel {
+        background-color: var(--color-primary-dark);
+        border-radius: var(--border-radius);
+        padding: var(--space-8);
+        color: var(--color-white);
+      }
+
+      .accepts-panel h3 { color: var(--color-white); font-size: var(--text-lg); margin-bottom: var(--space-5); }
+
+      .accepts-list { list-style: none; padding: 0; margin-bottom: var(--space-6); }
+
+      .accepts-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+        padding: var(--space-3) 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: var(--text-sm);
+        color: var(--color-primary-mid);
+        line-height: var(--leading-snug);
+      }
+
+      .accepts-list li:last-child { border-bottom: none; }
+      .accepts-list li strong { display: block; color: var(--color-white); font-weight: var(--weight-medium); margin-bottom: 2px; }
+      .accepts-check { color: var(--color-brass); flex-shrink: 0; margin-top: 2px; }
+
+      .contact-strip {
+        background-color: rgba(255,255,255,0.08);
+        border-radius: var(--border-radius-sm);
+        padding: var(--space-4);
+        margin-top: var(--space-2);
+      }
+
+      .contact-strip p { font-size: var(--text-sm); color: var(--color-primary-mid); margin-bottom: var(--space-1); max-width: none; }
+      .contact-strip a { color: var(--color-white); }
+
+      /* Success */
+      .form-success {
+        display: none;
+        background-color: var(--color-bg);
+        border: 2px solid var(--color-primary);
+        border-radius: var(--border-radius);
+        padding: var(--space-10);
+        text-align: center;
+        margin-bottom: var(--space-8);
+      }
+
+      .form-success.visible { display: block; }
+
+      /* Layout */
+      .referral-layout {
+        display: grid;
+        gap: var(--space-10);
+        align-items: start;
+      }
+
+      @media (min-width: 768px) {
+        .form-grid { grid-template-columns: 1fr 1fr; }
+      }
+
+      @media (min-width: 1024px) {
+        .referral-layout { grid-template-columns: 2fr 1fr; }
+      }
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <!-- TBC: replace GTM-XXXXXXX with Castleton's GTM container ID -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -155,84 +361,288 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <a href="https://uk.dentalhub.online/soe/new/The%20Castleton%20Dental%20Practice%20Ltd?pid=UKCSL01"
-         class="btn btn--primary nav__cta" target="_blank" rel="noopener">Book Online</a>
+         class="btn btn--primary nav__cta" target="_blank" rel="noopener">
+        Book Online
+      </a>
     </div>
   </nav>
+
   <main>
 
+    <!-- Page header -->
     <section class="section section--default">
       <div class="container">
         <div class="brass-bar--narrow"></div>
         <h1>Refer a Patient</h1>
-        <!-- LIFT + REWRITE: adapted from current referral page -->
-        <p class="lead">We welcome referrals from practices across the region for implants, oral surgery, CBCT scanning, and sedation. Every referred patient receives the same high standard of care &#8212; and a smooth, well-communicated handback to your practice on completion.</p>
+        <p class="lead">We welcome referrals from practices across the region. Every referred patient receives the same high standard of care — and a clear, well-communicated handback to your practice on completion.</p>
       </div>
     </section>
 
+    <!-- Form + sidebar -->
     <section class="section section--white">
       <div class="container">
-        <div class="grid grid--2" style="gap:4rem; align-items:start;">
+        <div class="referral-layout">
+
+          <!-- ── FORM ─────────────────────────────────────────────────────── -->
           <div>
-            <div class="brass-bar--narrow"></div>
-            <h2>What We Accept Referrals For</h2>
-            <ul style="list-style: none; padding: 0;">
-              <!-- LIFT: confirmed from current referrals page -->
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-pale-grey); color: var(--color-ink);">&#10003; &nbsp; Dental Implants &#8212; Dr. Caoimhe Doherty</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-pale-grey); color: var(--color-ink);">&#10003; &nbsp; Oral Surgery</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-pale-grey); color: var(--color-ink);">&#10003; &nbsp; CBCT Scanning</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-pale-grey); color: var(--color-ink);">&#10003; &nbsp; IV Sedation</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-pale-grey); color: var(--color-ink);">&#10003; &nbsp; Complex Restorative</li>
-              <li style="padding: 0.5rem 0; color: var(--color-ink);">&#10003; &nbsp; Facial Aesthetics</li>
-            </ul>
-            <br>
-            <p>Not sure if we can help? <a href="contact.html">Get in touch</a> and we will advise.</p>
-          </div>
-          <div class="referral">
-            <h2 class="referral__title">Referral Form</h2>
-            <p style="margin-bottom:1.5rem; color: var(--color-charcoal);">Complete the form below and we will be in touch within one working day.</p>
-            <form class="referral__form" method="POST" action="mailto:referrals@castletondental.co.uk">
-              <!-- TBC: form action — designated referral inbox to be confirmed by Holly -->
-              <div class="form__group">
-                <label class="form__label" for="ref-practice">Referring Practice</label>
-                <input class="form__input" type="text" id="ref-practice" name="practice" required placeholder="Practice name">
+
+            <!-- Success message -->
+            <div class="form-success" id="form-success" role="alert">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1rem;" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <h2 style="color:var(--color-primary-dark); margin-bottom:0.5rem;">Referral received</h2>
+              <p>Thank you. We will be in touch within one working day to confirm receipt and discuss next steps.</p>
+              <p style="margin-top:1rem; font-size:var(--text-sm); color:var(--color-stone);">If you need to reach us urgently, call <a href="tel:01252715576">01252 715576</a>.</p>
+            </div>
+
+            <!-- NOTE: File uploads require a form backend.                          -->
+            <!-- Recommended: Formspree (formspree.io) — free tier, 5MB attachments. -->
+            <!-- TBC: replace TBC-FORMSPREE-ID with endpoint once account created.   -->
+            <!-- Phase 3 action: Ryan to set up Formspree account for Castleton.     -->
+            <form id="referral-form"
+                  action="https://formspree.io/f/TBC-FORMSPREE-ID"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  novalidate>
+
+              <!-- ── SECTION 1: REFERRING PRACTICE ────────────────────────── -->
+              <div class="form-section-strip">
+                <span class="section-number" aria-hidden="true">1</span>
+                <span class="section-title">Referring Practice</span>
               </div>
-              <div class="form__group">
-                <label class="form__label" for="ref-dentist">Referring Dentist</label>
-                <input class="form__input" type="text" id="ref-dentist" name="dentist" required placeholder="Your name">
+
+              <div class="form-card">
+                <div class="form-grid">
+
+                  <div class="form-group">
+                    <label class="form-label" for="practice-name">
+                      Practice name <span class="required" aria-label="required">*</span>
+                    </label>
+                    <input class="form-input" type="text" id="practice-name" name="practice_name"
+                      required placeholder="e.g. Farnham Dental Practice" autocomplete="organization">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="dentist-name">
+                      Referring dentist <span class="required" aria-label="required">*</span>
+                    </label>
+                    <input class="form-input" type="text" id="dentist-name" name="dentist_name"
+                      required placeholder="Dr. First Last" autocomplete="name">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="practice-email">
+                      Practice email <span class="required" aria-label="required">*</span>
+                    </label>
+                    <input class="form-input" type="email" id="practice-email" name="practice_email"
+                      required placeholder="you@yourpractice.co.uk" autocomplete="email">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="practice-phone">
+                      Practice phone <span class="required" aria-label="required">*</span>
+                    </label>
+                    <input class="form-input" type="tel" id="practice-phone" name="practice_phone"
+                      required placeholder="01234 567890" autocomplete="tel">
+                  </div>
+
+                  <div class="form-group form-group--full">
+                    <label class="form-label" for="practice-address">Practice address</label>
+                    <input class="form-input" type="text" id="practice-address" name="practice_address"
+                      placeholder="Street, Town, Postcode" autocomplete="street-address">
+                  </div>
+
+                </div>
               </div>
-              <div class="form__group">
-                <label class="form__label" for="ref-email">Email Address</label>
-                <input class="form__input" type="email" id="ref-email" name="email" required placeholder="your@practice.co.uk">
+
+              <!-- ── SECTION 2: PATIENT DETAILS ──────────────────────────── -->
+              <div class="form-section-strip">
+                <span class="section-number" aria-hidden="true">2</span>
+                <span class="section-title">Patient Details</span>
               </div>
-              <div class="form__group">
-                <label class="form__label" for="ref-phone">Phone Number</label>
-                <input class="form__input" type="tel" id="ref-phone" name="phone" placeholder="01234 567890">
+
+              <div class="form-card">
+                <div class="form-grid">
+
+                  <div class="form-group">
+                    <label class="form-label" for="patient-name">
+                      Patient name <span class="required" aria-label="required">*</span>
+                    </label>
+                    <input class="form-input" type="text" id="patient-name" name="patient_name"
+                      required placeholder="First Last">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="patient-dob">
+                      Date of birth <span class="required" aria-label="required">*</span>
+                    </label>
+                    <input class="form-input" type="date" id="patient-dob" name="patient_dob" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="patient-phone">Patient phone</label>
+                    <input class="form-input" type="tel" id="patient-phone" name="patient_phone"
+                      placeholder="01234 567890">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="patient-email">Patient email</label>
+                    <input class="form-input" type="email" id="patient-email" name="patient_email"
+                      placeholder="patient@email.com">
+                  </div>
+
+                  <div class="form-group form-group--full">
+                    <label class="form-label" for="referral-type">
+                      Reason for referral <span class="required" aria-label="required">*</span>
+                    </label>
+                    <select class="form-select" id="referral-type" name="referral_type" required>
+                      <option value="" disabled selected>Select treatment type</option>
+                      <option value="dental-implants">Dental Implants</option>
+                      <option value="oral-surgery">Oral Surgery</option>
+                      <option value="cbct-scan">CBCT Scanning</option>
+                      <option value="iv-sedation">IV Sedation</option>
+                      <option value="complex-restorative">Complex Restorative</option>
+                      <option value="facial-aesthetics">Facial Aesthetics</option>
+                      <option value="other">Other — please describe below</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group form-group--full">
+                    <label class="form-label" for="clinical-notes">
+                      Clinical details &amp; reason for referral <span class="required" aria-label="required">*</span>
+                    </label>
+                    <textarea class="form-textarea" id="clinical-notes" name="clinical_notes"
+                      required style="min-height:150px;"
+                      placeholder="Please include relevant clinical history, current presentation, and any specific requirements or concerns..."></textarea>
+                  </div>
+
+                  <div class="form-group form-group--full">
+                    <label class="form-label" for="urgency">Urgency</label>
+                    <select class="form-select" id="urgency" name="urgency">
+                      <option value="routine" selected>Routine</option>
+                      <option value="soon">Soon — within 4 weeks</option>
+                      <option value="urgent">Urgent — within 1 week</option>
+                    </select>
+                  </div>
+
+                </div>
               </div>
-              <div class="form__group" style="grid-column: 1 / -1;">
-                <label class="form__label" for="ref-patient">Patient Details &amp; Reason for Referral</label>
-                <textarea class="form__textarea" id="ref-patient" name="details" required placeholder="Patient name, date of birth, and brief clinical details..."></textarea>
+
+              <!-- ── SECTION 3: SUPPORTING FILES ──────────────────────────── -->
+              <div class="form-section-strip">
+                <span class="section-number" aria-hidden="true">3</span>
+                <span class="section-title">Supporting Files</span>
               </div>
-              <div style="grid-column: 1 / -1;">
-                <button type="submit" class="btn btn--primary">Submit Referral</button>
+
+              <div class="form-card">
+                <p style="color:var(--color-charcoal); margin-bottom:1.5rem;">
+                  Upload relevant X-rays, clinical photographs, or referral letters. Accepted formats: PDF, JPG, PNG. Maximum 5MB per file.
+                </p>
+
+                <div class="file-upload-area" id="drop-zone">
+                  <input type="file" id="file-upload" name="attachments[]"
+                    multiple accept=".pdf,.jpg,.jpeg,.png"
+                    aria-label="Upload supporting files"
+                    onchange="handleFileSelect(this)">
+
+                  <svg class="file-upload-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+
+                  <p class="file-upload-title">Drag and drop files here</p>
+                  <p class="file-upload-hint">or <strong>click to browse</strong> &nbsp;·&nbsp; PDF, JPG, PNG &nbsp;·&nbsp; Max 5MB per file</p>
+                </div>
+
+                <div class="file-list" id="file-list" aria-live="polite"></div>
               </div>
+
+              <!-- ── CONSENT ────────────────────────────────────────────────── -->
+              <div class="consent-row">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent">
+                  I confirm that I have obtained appropriate consent from the patient to share their clinical information with Castleton Dental Practice for the purpose of this referral. I have read and agree to the
+                  <a href="privacy.html">privacy policy</a>.<span class="required" aria-label="required">*</span>
+                </label>
+              </div>
+
+              <!-- Honeypot — spam prevention -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+              <!-- ── SUBMIT ──────────────────────────────────────────────────── -->
+              <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+                <button type="submit" class="btn btn--primary" id="submit-btn">
+                  Submit Referral
+                </button>
+                <p class="caption" style="margin:0;">We will confirm receipt within one working day</p>
+              </div>
+
             </form>
           </div>
-        </div>
 
-        <!-- LIFT: associations from current referral page -->
-        <div style="margin-top:3rem; text-align:center;">
-          <p class="label" style="margin-bottom:1.5rem;">Associations &amp; Accreditations</p>
-          <div class="flex flex--center" style="flex-wrap:wrap; gap:2rem;">
-            <a href="https://bda.org/" target="_blank" rel="noopener" class="caption">British Dental Association</a>
-            <a href="https://www.cqc.org.uk/" target="_blank" rel="noopener" class="caption">Care Quality Commission</a>
-            <a href="https://www.gdc-uk.org/" target="_blank" rel="noopener" class="caption">General Dental Council</a>
-            <a href="https://www.dpas.co.uk/" target="_blank" rel="noopener" class="caption">DPAS</a>
-            <a href="https://www.medenta.com/" target="_blank" rel="noopener" class="caption">Medenta</a>
-          </div>
-          <!-- TBC: replace text links with logo images once supplied by Holly -->
+          <!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+          <aside class="accepts-panel" aria-label="What we accept referrals for">
+            <div class="brass-bar--narrow" style="margin-bottom:1.5rem;"></div>
+            <h3>What we accept referrals for</h3>
+
+            <ul class="accepts-list" role="list">
+              <li>
+                <span class="accepts-check" aria-hidden="true">&#10003;</span>
+                <span><strong>Dental Implants</strong>Dr. Caoimhe Doherty — implantologist</span>
+              </li>
+              <li>
+                <span class="accepts-check" aria-hidden="true">&#10003;</span>
+                <span><strong>Oral Surgery</strong>Extractions and surgical procedures</span>
+              </li>
+              <li>
+                <span class="accepts-check" aria-hidden="true">&#10003;</span>
+                <span><strong>CBCT Scanning</strong>Cone beam CT imaging and reporting</span>
+              </li>
+              <li>
+                <span class="accepts-check" aria-hidden="true">&#10003;</span>
+                <span><strong>IV Sedation</strong>For nervous patients or complex cases</span>
+              </li>
+              <li>
+                <span class="accepts-check" aria-hidden="true">&#10003;</span>
+                <span><strong>Complex Restorative</strong>Multi-disciplinary planning</span>
+              </li>
+              <li>
+                <span class="accepts-check" aria-hidden="true">&#10003;</span>
+                <span><strong>Facial Aesthetics</strong>Anti-wrinkle and dermal fillers</span>
+              </li>
+            </ul>
+
+            <div class="contact-strip">
+              <p>Prefer to refer by phone?</p>
+              <p><a href="tel:01252715576"><strong>01252 715576</strong></a></p>
+              <p style="margin-top:0.5rem;">Or email us:</p>
+              <!-- TBC: referral inbox email — Phase 3 action: Holly -->
+              <p><a href="mailto:referrals@castletondental.co.uk">referrals@castletondental.co.uk</a></p>
+            </div>
+          </aside>
+
         </div>
       </div>
     </section>
+
+    <!-- Association strip -->
+    <section class="section section--default">
+      <div class="container" style="text-align:center;">
+        <p class="label" style="margin-bottom:1.5rem;">Associations &amp; Accreditations</p>
+        <div class="flex flex--center" style="flex-wrap:wrap; gap:2rem;">
+          <a href="https://bda.org/" target="_blank" rel="noopener" class="caption">British Dental Association</a>
+          <a href="https://www.cqc.org.uk/" target="_blank" rel="noopener" class="caption">Care Quality Commission</a>
+          <a href="https://www.gdc-uk.org/" target="_blank" rel="noopener" class="caption">General Dental Council</a>
+          <a href="https://www.dpas.co.uk/" target="_blank" rel="noopener" class="caption">DPAS</a>
+          <a href="https://www.medenta.com/" target="_blank" rel="noopener" class="caption">Medenta</a>
+        </div>
+        <!-- TBC: replace text links with logo images once supplied by Holly -->
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -262,70 +672,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="mailto:info@castletondental.co.uk">info@castletondental.co.uk</a></li>
           </ul>
         </div>
-
         <div>
           <p class="footer__nav-title">Follow Us</p>
           <div style="display:flex; gap:1rem; margin-top:0.25rem;">
-
-            <a href="https://www.instagram.com/castletondental/"
-               target="_blank" rel="noopener"
+            <a href="https://www.instagram.com/castletondental/" target="_blank" rel="noopener"
                aria-label="Castleton Dental on Instagram"
                style="color:var(--color-stone); transition:color 150ms ease; display:inline-flex; align-items:center;"
                onmouseover="this.style.color='var(--color-primary)'"
                onmouseout="this.style.color='var(--color-stone)'">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-          </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
             </a>
-
-            <a href="#"
-               target="_blank" rel="noopener"
-               aria-label="Castleton Dental on Facebook"
+            <a href="#" target="_blank" rel="noopener" aria-label="Castleton Dental on Facebook"
                style="color:var(--color-stone); transition:color 150ms ease; display:inline-flex; align-items:center;"
                onmouseover="this.style.color='var(--color-primary)'"
                onmouseout="this.style.color='var(--color-stone)'"
-               data-tbc="Facebook URL to be confirmed — Phase 3 action: Holly">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-          </svg>
+               data-tbc="Facebook URL — Phase 3 action: Holly">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-
-            <a href="#"
-               target="_blank" rel="noopener"
-               aria-label="Castleton Dental on LinkedIn"
+            <a href="#" target="_blank" rel="noopener" aria-label="Castleton Dental on LinkedIn"
                style="color:var(--color-stone); transition:color 150ms ease; display:inline-flex; align-items:center;"
                onmouseover="this.style.color='var(--color-primary)'"
                onmouseout="this.style.color='var(--color-stone)'"
-               data-tbc="LinkedIn URL to be confirmed — Phase 3 action: Holly">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
+               data-tbc="LinkedIn URL — Phase 3 action: Holly">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-
           </div>
         </div>
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 Castleton Dental Practice Ltd</p>
         <p><a href="terms.html">Terms of Business</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
-        <p>Built by
-          <a href="https://ryanbishop.co.uk"
-             target="_blank"
-             rel="noopener"
-             style="color:var(--color-primary); font-weight:500;"
-             title="AI-augmented web design and build — ryanbishop.co.uk">
-            ryanbishop.co.uk
-          </a>
-        </p>
+        <p>Built by <a href="https://ryanbishop.co.uk" target="_blank" rel="noopener" style="color:var(--color-primary); font-weight:500;" title="AI-augmented web design and build — ryanbishop.co.uk">ryanbishop.co.uk</a></p>
       </div>
     </div>
   </footer>
 
   <script>
+    // Nav hamburger
     const hamburger = document.querySelector('.nav__hamburger');
     const nav = document.querySelector('.nav');
     if (hamburger) {
@@ -334,6 +717,71 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         hamburger.setAttribute('aria-expanded', isOpen);
       });
     }
+
+    // File upload — show selected files
+    function handleFileSelect(input) {
+      const list = document.getElementById('file-list');
+      list.innerHTML = '';
+      if (!input.files.length) return;
+      Array.from(input.files).forEach(file => {
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        const item = document.createElement('div');
+        item.className = 'file-item';
+        item.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>${file.name}</span>
+          <span style="margin-left:auto; color:var(--color-stone);">${sizeMB} MB</span>`;
+        list.appendChild(item);
+      });
+    }
+
+    // Drag and drop
+    const dropZone = document.getElementById('drop-zone');
+    if (dropZone) {
+      ['dragenter','dragover'].forEach(e => {
+        dropZone.addEventListener(e, ev => { ev.preventDefault(); dropZone.classList.add('dragover'); });
+      });
+      ['dragleave','drop'].forEach(e => {
+        dropZone.addEventListener(e, ev => { ev.preventDefault(); dropZone.classList.remove('dragover'); });
+      });
+      dropZone.addEventListener('drop', ev => {
+        const input = document.getElementById('file-upload');
+        input.files = ev.dataTransfer.files;
+        handleFileSelect(input);
+      });
+    }
+
+    // Form submission via Formspree
+    const form = document.getElementById('referral-form');
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.textContent = 'Sending\u2026';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            document.getElementById('form-success').classList.add('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            btn.textContent = 'Submit Referral';
+            btn.disabled = false;
+            alert('There was a problem sending your referral. Please call 01252 715576 or email referrals@castletondental.co.uk.');
+          }
+        } catch {
+          btn.textContent = 'Submit Referral';
+          btn.disabled = false;
+          alert('There was a problem sending your referral. Please call 01252 715576 or email referrals@castletondental.co.uk.');
+        }
+      });
+    }
   </script>
+
 </body>
 </html>
