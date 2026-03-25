@@ -1,15 +1,15 @@
 /* ============================================================
    CASTLETON DENTAL PRACTICE — styles.css
-   Draft concept v2.0 | ryanbishop.co.uk
+   Draft concept v3.0 | ryanbishop.co.uk
    
    STATUS: Draft concept — subject to change pending:
-   - Client approval of style guide v2.0
+   - Client approval of style guide v3.0
    - Final font confirmation (--font-primary placeholder)
    - Final logo files (SVG/EPS)
    
-   PALETTE: Updated March 2026 following client review.
-   Mint family replaced with warm olive and linen tones.
-   Brass accent confirmed.
+   PALETTE: Updated March 2026 — v3.0.
+   Sage Soft and Olive swapped in hierarchy.
+   Sage Soft is now primary; Olive is secondary actions/hover.
    
    ARCHITECTURE: Single-file CSS, mobile-first
    All design tokens defined as custom properties in :root
@@ -24,10 +24,10 @@
 
 :root {
 
-  /* ── Colour Palette (v2.0 — approved style guide March 2026) ── */
-  --color-primary:        #8A8E75;  /* Olive — primary brand, Holly's preferred */
+  /* ── Colour Palette (v3.0 — approved style guide March 2026) ── */
+  --color-primary:        #BEC5A4;  /* Sage Soft — primary brand (swapped v3) */
   --color-primary-dark:   #68604D;  /* Dark Olive — CTAs, nav, active states */
-  --color-primary-mid:    #BEC5A4;  /* Sage Soft — secondary actions, hover */
+  --color-primary-mid:    #8A8E75;  /* Olive — secondary actions, hover (swapped v3) */
   --color-primary-light:  #D5C7AD;  /* Sand — warm neutral mid, tints */
   --color-bg:             #F1EAD8;  /* Linen — page background, calm canvas */
   --color-ink:            #1b1c17;  /* Ink — primary body text (unchanged) */
