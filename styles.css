@@ -25,9 +25,9 @@
 :root {
 
   /* ── Colour Palette (v3.0 — approved style guide March 2026) ── */
-  --color-primary:        #BEC5A4;  /* Sage Soft — primary brand (swapped v3) */
-  --color-primary-dark:   #68604D;  /* Dark Olive — CTAs, nav, active states */
-  --color-primary-mid:    #8A8E75;  /* Olive — secondary actions, hover (swapped v3) */
+  --color-primary:        #8A8E75;  /* Olive — primary brand (unchanged) */
+  --color-primary-dark:   #BEC5A4;  /* Sage Soft — nav, CTAs, active states (swapped v3) */
+  --color-primary-mid:    #68604D;  /* Dark Olive — secondary actions, hover (swapped v3) */
   --color-primary-light:  #D5C7AD;  /* Sand — warm neutral mid, tints */
   --color-bg:             #F1EAD8;  /* Linen — page background, calm canvas */
   --color-ink:            #1b1c17;  /* Ink — primary body text (unchanged) */
