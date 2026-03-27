@@ -607,7 +607,24 @@ blockquote {
   height: 2px;
   background-color: var(--color-ink);
   border-radius: 2px;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
+
+/* Hamburger → × when menu is open */
+.menu-open .nav-hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-open .nav-hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Overlay — dims content behind open drawer */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 28, 23, 0.45);
+  z-index: 198;
+  cursor: pointer;
+}
+.menu-open .nav-overlay { display: block; }
 
 .nav-top__logo-mobile { display: none; }
 
@@ -645,7 +662,7 @@ blockquote {
   text-decoration: none;
 }
 
-.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer > a:last-of-type { border-bottom: none; }
 
 .nav-drawer__ctas {
   display: flex;

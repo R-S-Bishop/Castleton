@@ -782,99 +782,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
-  <script>
-    // Nav hamburger
-    const hamburger = document.querySelector('.nav__hamburger');
-    const nav = document.querySelector('.nav');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('nav--open');
-        hamburger.setAttribute('aria-expanded', isOpen);
-      });
-    }
-
-    // File upload — show selected files
-    function handleFileSelect(input) {
-      const list = document.getElementById('file-list');
-      list.innerHTML = '';
-      if (!input.files.length) return;
-      Array.from(input.files).forEach(file => {
-        const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-        const item = document.createElement('div');
-        item.className = 'file-item';
-        item.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span>${file.name}</span>
-          <span style="margin-left:auto; color:var(--color-stone);">${sizeMB} MB</span>`;
-        list.appendChild(item);
-      });
-    }
-
-    // Drag and drop
-    const dropZone = document.getElementById('drop-zone');
-    if (dropZone) {
-      ['dragenter','dragover'].forEach(e => {
-        dropZone.addEventListener(e, ev => { ev.preventDefault(); dropZone.classList.add('dragover'); });
-      });
-      ['dragleave','drop'].forEach(e => {
-        dropZone.addEventListener(e, ev => { ev.preventDefault(); dropZone.classList.remove('dragover'); });
-      });
-      dropZone.addEventListener('drop', ev => {
-        const input = document.getElementById('file-upload');
-        input.files = ev.dataTransfer.files;
-        handleFileSelect(input);
-      });
-    }
-
-    // Form submission via Formspree
-    const form = document.getElementById('referral-form');
-    if (form) {
-      form.addEventListener('submit', async e => {
-        e.preventDefault();
-        const btn = document.getElementById('submit-btn');
-        btn.textContent = 'Sending\u2026';
-        btn.disabled = true;
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
-          if (res.ok) {
-            form.style.display = 'none';
-            document.getElementById('form-success').classList.add('visible');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          } else {
-            btn.textContent = 'Submit Referral';
-            btn.disabled = false;
-            alert('There was a problem sending your referral. Please call 01252 715576 or email referrals@castletondental.co.uk.');
-          }
-        } catch {
-          btn.textContent = 'Submit Referral';
-          btn.disabled = false;
-          alert('There was a problem sending your referral. Please call 01252 715576 or email referrals@castletondental.co.uk.');
-        }
-      });
-    }
-  </script>
-
-
-  <script>
-    // L-shaped nav — hamburger toggle
+<script>
+    // L-shaped nav — hamburger toggle + overlay
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
+    function closeMenu() {
+      drawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+    }
     if (hamburger && drawer) {
       hamburger.addEventListener('click', () => {
         const isOpen = drawer.classList.toggle('open');
         hamburger.setAttribute('aria-expanded', isOpen);
         drawer.setAttribute('aria-hidden', !isOpen);
+        document.body.classList.toggle('menu-open', isOpen);
       });
+      overlay.addEventListener('click', closeMenu);
       drawer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          drawer.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', false);
-          drawer.setAttribute('aria-hidden', true);
-        });
+        link.addEventListener('click', closeMenu);
       });
     }
   </script>
