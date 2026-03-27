@@ -296,3 +296,29 @@ Send the API key securely — Ryan will implement the branded logo pin on the Co
 ---
 
 *Note: `styles.css` at v3.0 per Style Guide v3.0 — March 2026. Skeleton at v7.*
+
+---
+
+## Session 4 — 27 March 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Work Completed
+
+| Task | Notes |
+|---|---|
+| Restored GBP Google Maps embed | Both `contact.html` and `index.html` — Place ID `0x48742daba0c2eb6d:0x4a77be4480f6da66` had been overwritten by the new arc nav commit; now fixed on both pages |
+| Mobile navigation — full diagnosis and fix | See detail below |
+
+### Mobile Navigation — Diagnosis & Fixes
+
+**Root cause of unresponsive hamburger on iPhone:**
+Every page contained two conflicting `<script>` blocks — an old `nav--open` script (pre-arc nav) and the new arc nav script — both declaring `const hamburger`. Browsers throw a `SyntaxError` on duplicate `const` declarations, silently killing all nav JS on the page.
+
+**All fixes applied (23 files changed):**
+
+1. **Stale JS removed** — Old `nav--open` script blocks purged from all 20 active HTML pages
+2. **Backdrop overlay** — `.nav-overlay` div created dynamically in JS; dims content behind open drawer; tapping overlay closes the drawer
+3. **Hamburger → × animation** — CSS transitions on the three spans; animates to × when `menu-open` is on `body`
+4. **Border selector bug fixed** — `.nav-mobile-drawer a:last-child` changed to `> a:last-of-type` so the Contact nav link correctly loses its bottom border
+
