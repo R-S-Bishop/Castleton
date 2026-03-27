@@ -129,36 +129,113 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+  <!-- ── LEFT COLUMN ──────────────────────────────────────────────────── -->
+  <nav class="nav-left" aria-label="Site navigation">
 
-  <div class="nav__contact-bar">
-    <div class="container">
-      <a href="tel:01252715576">01252 715576</a>
-      &nbsp;·&nbsp;
-      <a href="mailto:info@castletondental.co.uk">info@castletondental.co.uk</a>
-      &nbsp;·&nbsp;
-      Mon–Thu 08:30–17:00 &nbsp;|&nbsp; Fri 08:00–13:30
+    <div class="nav-left__logo">
+      <img src="images/castleton-logo.png" alt="Castleton Dental Practice logo">
+      <p class="nav-left__wordmark">
+        castleton
+        <span>Dental Practice</span>
+      </p>
     </div>
-  </div>
 
-  <nav class="nav" aria-label="Main navigation">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">castleton</a>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links" role="list">
-        <li><a href="treatments/index.html">What We Do</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="prices.html">Prices</a></li>
-        <li><a href="referrals.html">Referrals</a></li>
-        <li><a href="testimonials.html">Testimonials</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-      <a href="https://uk.dentalhub.online/soe/new/The%20Castleton%20Dental%20Practice%20Ltd?pid=UKCSL01"
-         class="btn btn--primary nav__cta" target="_blank" rel="noopener">Book Online</a>
+    <div class="nav-left__divider"></div>
+
+    <div class="nav-left__body">
+
+      <div class="nav-left__contact">
+        <p class="nav-left__contact-label">Contact</p>
+
+        <div class="nav-left__contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:01252715576">01252 715576</a>
+        </div>
+
+        <div class="nav-left__contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@castletondental.co.uk">info@castletondental.co.uk</a>
+        </div>
+
+        <div class="nav-left__contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>11 Castle Street, Farnham<br>GU9 7JA</span>
+        </div>
+
+        <div class="nav-left__hours">
+          Mon–Thu &nbsp;08:30–17:00<br>
+          Fri &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;08:00–13:30
+        </div>
+      </div>
+
+      <div class="nav-left__ctas">
+        <a href="https://uk.dentalhub.online/soe/new/The%20Castleton%20Dental%20Practice%20Ltd?pid=UKCSL01"
+           class="nav-left__btn nav-left__btn--primary"
+           target="_blank" rel="noopener">
+          Book an Appointment
+        </a>
+        <a href="referrals.html" class="nav-left__btn nav-left__btn--secondary">
+          Refer a Patient
+        </a>
+        <!-- TBC: additional CTA buttons -->
+      </div>
+
     </div>
   </nav>
-  <main>
+
+  <!-- ── ARC — concave curve at inner junction ────────────────────────── -->
+  <div class="nav-arc" aria-hidden="true"></div>
+
+  <!-- ── TOP BAR ──────────────────────────────────────────────────────── -->
+  <header class="nav-top" aria-label="Main navigation">
+
+    <!-- Mobile: logo shown in top bar -->
+    <div class="nav-top__logo-mobile">
+      <img src="images/castleton-logo.png" alt="Castleton Dental Practice">
+    </div>
+
+    <!-- Desktop: wordmark + divider + links -->
+    <div class="nav-top__brand">
+      <div class="nav-top__wordmark">
+        <span class="nav-top__wordmark-name">castleton</span>
+        <span class="nav-top__wordmark-sub">Dental Practice</span>
+      </div>
+    </div>
+
+    <div class="nav-top__divider" aria-hidden="true"></div>
+
+    <ul class="nav-top__links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="treatments/index.html">What We Do</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="prices.html">Prices</a></li>
+      <li><a href="referrals.html">Referrals</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+
+    <!-- Mobile: hamburger -->
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+
+  </header>
+
+  <!-- ── MOBILE DRAWER ────────────────────────────────────────────────── -->
+  <div class="nav-mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="treatments/index.html">What We Do</a>
+    <a href="about.html">About Us</a>
+    <a href="prices.html">Prices</a>
+    <a href="referrals.html">Referrals</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-drawer__ctas">
+      <a href="https://uk.dentalhub.online/soe/new/The%20Castleton%20Dental%20Practice%20Ltd?pid=UKCSL01" target="_blank" rel="noopener">Book Online</a>
+      <a href="referrals.html">Refer a Patient</a>
+    </div>
+  </div>
+  <main class="page-main">
 
     <section class="section section--default">
       <div class="container">
@@ -218,10 +295,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div>
             <div class="map-embed" style="margin-bottom:2rem;">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.293528073172!2d-0.8025023426740359!3d51.21587807068687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742daba0c2eb6d%3A0x4a77be4480f6da66!2sCastleton%20Dental!5e0!3m2!1sen!2suk!4v1774361552067!5m2!1sen!2suk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2491.2!2d-0.7985!3d51.2144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCastleton+Dental+Practice!5e0!3m2!1sen!2suk!4v1"
                 width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                title="Castleton Dental Practice location on Google Maps">
+                title="Castleton Dental Practice location">
               </iframe>
             </div>
             <div class="booking-widget">
@@ -338,5 +415,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   </script>
 
+  <script>
+    // L-shaped nav — hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobile-drawer');
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+        drawer.setAttribute('aria-hidden', !isOpen);
+      });
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', false);
+          drawer.setAttribute('aria-hidden', true);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
