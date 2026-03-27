@@ -499,8 +499,8 @@ blockquote {
 /* ── Arc — concave road-turn curve at inner junction ──────────── */
 .nav-arc {
   position: fixed;
-  top: var(--top-height);
-  left: var(--left-width);
+  top: calc(var(--top-height) - 2px);
+  left: calc(var(--left-width) - 2px);
   width: calc(var(--arc-radius) + 2px);
   height: calc(var(--arc-radius) + 2px);
   background: radial-gradient(
