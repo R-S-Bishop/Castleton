@@ -148,8 +148,88 @@ Both sent to Holly for approval.
 
 ---
 
-### Outstanding / TBC Items (from Content Mapping)
-The following remain open for future sessions:
+## Session 4 — 26 March 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Planning and design session via Claude (claude.ai). Focus on L-shaped sticky nav — concept design, iterative refinement via browser screenshots, Style Guide v3 update, and full implementation across all 16 pages. No Claude Code used — all changes packaged in skeleton v7 for manual push via GitHub Desktop.
+
+### Work Completed
+
+#### 1. Nav concept — L-shaped sticky nav designed and iterated
+
+Castleton Dental requested a nav forming an L-shape: a fixed vertical column on the left and a fixed horizontal bar across the top, meeting at a smooth concave arc (described as "a road turn, not a T-junction"). Multiple iterations produced and reviewed via browser screenshots.
+
+**Final spec:**
+
+| Element | Detail |
+|---|---|
+| Left column | 200px fixed width, full viewport height, Sage Soft background |
+| Top bar | Full width minus left column, 60px height, Sage Soft background |
+| Arc junction | 56px radius, radial-gradient technique — Sage Soft regardless of page content scrolling behind |
+| Logo | `images/castleton-logo.png` in left column, 140px wide |
+| Left column content | Logo, brass divider, contact details (phone, email, address, hours), Book an Appointment (primary CTA), Refer a Patient (secondary CTA), TBC slot for future CTAs |
+| Top bar content | Wordmark ("castleton / DENTAL PRACTICE" — text only, no duplicate logo), brass divider, nav links |
+| Nav link states | Rest: Ink on Sage Soft / Hover + active: White on Dark Olive pill |
+| Mobile | Left column hidden, top bar full width, logo in top bar, hamburger → drawer with links and CTAs |
+
+**Arc technique:** A `div.nav-arc` with `radial-gradient(circle at 100% 100%, transparent [radius], Sage Soft [radius])` creates a concave curve that remains Sage Soft regardless of page section colour scrolling behind. Earlier approach (page-background coloured div with `border-radius`) was abandoned as it exposed incorrect colour when scrolling over white sections.
+
+**Iterations:**
+- v1: Initial concept — arc too small (40px), logo constrained to top bar height
+- v2: Arc increased to 56px, logo freed with generous padding, wordmark added to top bar alongside small logo
+- v3: Small logo removed from top bar (wordmark text only), arc overlap offset removed (caused visible protrusion), CTAs repositioned below contact details
+- v4 (final): Arc gradient tightened, proportions confirmed, all three feedback points resolved
+
+**Concept file:** `castleton_nav_concept.html` (standalone, self-contained, for sharing or archiving)
+
+#### 2. Style Guide v3.0 — Key Components section updated and finalised
+
+Before sending to Holly, Section 6 (Key Components) updated to reflect the agreed nav:
+
+- **Navigation** — replaced generic bullet list with a structured table: left column, top bar, arc, mobile
+- **Navigation link states** — new table documenting Ink at rest / Dark Olive hover, confirmed in concept
+- **Left column CTAs** — own table: Book an Appointment (primary), Refer a Patient (secondary), extensible TBC slot
+- **Buttons (page content)** — updated to v3 palette; old v1 hex values removed; Brass accent added as third type for PDF downloads
+- **Cards** — Sand border (#D5C7AD) replacing old mint reference
+- **Photography** — "client" replaced with "Castleton Dental" and "Holly" per house style
+- **Approval table** — navigation split into two rows (layout pending / link states confirmed)
+
+**Style Guide v3.0 sent to Holly.**
+
+#### 3. L-shaped nav implemented across all 16 pages — skeleton v7
+
+Script-based approach replaced the old single-bar nav simultaneously across all pages. Zero changes to any page content.
+
+**What changed on every page:**
+- Old contact bar and single-bar nav block removed
+- L-shaped nav inserted: `nav-left`, `nav-arc`, `nav-top`, mobile drawer
+- `<main>` gains `class="page-main"` providing `margin-left: var(--left-width)` on desktop
+- Hamburger JS updated to target new element IDs
+
+**What did not change:**
+- All `<head>` content — GTM, Cookiebot, GA4, meta tags, canonical, structured data, noindex
+- Every section, heading, paragraph, form, and footer
+- All CSS design tokens and custom properties
+
+**Treatment subpages** — logo and all internal links correctly use `../` prefix. Verified.
+
+**`styles.css` changes:**
+- Old nav CSS block fully replaced (`.nav`, `.nav__inner`, `.nav__logo`, `.nav__contact-bar` etc.)
+- New L-shaped nav CSS added: left column, top bar, arc, page-main offset, mobile breakpoint
+- `--left-width: 200px`, `--top-height: 60px`, `--arc-radius: 56px` in `:root` — single-value iteration for proportional changes
+- Obsolete tablet breakpoint nav overrides removed
+
+**Files changed:**
+- All 16 HTML pages (`/` and `/treatments/`)
+- `styles.css`
+
+**Deliverable:** `castleton_skeleton_v7.zip`
+
+---
+
+### Outstanding / TBC Items
 
 | Item | Owner | Status |
 |---|---|---|
@@ -163,18 +243,19 @@ The following remain open for future sessions:
 | Facebook account URL | Holly | Pending |
 | LinkedIn account URL | Holly | Pending |
 | Final logo files (SVG/EPS) | Holly | In development |
-| Colour palette — Style Guide v3.0 | Holly | Pending approval |
-| GBT Airflow Hygiene fee — not on Fee Guide PDF; confirm whether separate fee or sits under Hygienist line | Holly | Pending |
+| Colour palette & nav layout — Style Guide v3.0 | Holly | Sent — pending approval |
+| GBT Airflow Hygiene fee — confirm whether separate fee or under Hygienist line | Holly | Pending |
 | Referral inbox email address | Holly | Pending — blocks Formspree setup |
 | Formspree account setup (free tier, formspree.io) | Holly → Ryan | Blocked — awaiting referral inbox email |
 | DentalHub — supply new Castleton logo once finalised | Holly → Ryan | Pending — awaiting final logo |
 | Privacy Policy HTML page | Ryan | Pending |
 | Embedded Google Maps — home page | Ryan | Pending |
-| Google Maps Place ID — retrieve from Maps embed (no login needed) and pass to Ryan to pin exactly to GBP listing | Holly / Ryan | ✅ Complete — Place ID: `0x48742daba0c2eb6d:0x4a77be4480f6da66` |
-| Google Business Profile — upload new building & team photography once available (mirrors website assets, boosts local SEO) | Holly | Pending — awaiting photography |
-| Google Maps custom logo pin — requires Maps JavaScript API key (see guide below) | Holly → Ryan | Pending |
+| Google Maps Place ID | Holly / Ryan | ✅ Complete — Place ID: `0x48742daba0c2eb6d:0x4a77be4480f6da66` |
+| Google Business Profile — upload photography once available | Holly | Pending — awaiting photography |
+| Google Maps custom logo pin — requires Maps JavaScript API key (see Appendix) | Holly → Ryan | Pending |
 
 ---
+
 ## Appendix — Google Maps Custom Logo Pin: Step-by-Step Guide for Holly
 
 The map on the Contact page currently shows Google's standard red pin. To replace it with the Castleton logo, a **Google Maps JavaScript API key** is needed. This is free for a site of this size — Google provides $200/month credit, and a dental practice website will use a tiny fraction of that.
@@ -214,4 +295,4 @@ Send the API key securely — Ryan will implement the branded logo pin on the Co
 
 ---
 
-*Note: `styles.css` is at v3.0 per approved Style Guide v3.0 — March 2026.*
+*Note: `styles.css` at v3.0 per Style Guide v3.0 — March 2026. Skeleton at v7.*
