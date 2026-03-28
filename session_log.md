@@ -2,6 +2,71 @@
 
 ---
 
+## Session 5 — 28 March 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Claude Code session. Focus on nav logo replacement, logo interactivity, building photography in hero, and hero layout/typography improvements.
+
+### Work Completed
+
+#### 1. Nav logo — replaced with house illustration across all pages
+`castleton-logo.png` replaced with `castleton-house.png` (the new transparent illustrated house logo) in both the desktop left sidebar and the mobile top bar, across all 21 HTML pages (13 root-level + 8 `/treatments/` subpages).
+
+**Files changed:** All HTML pages in `/` and `/treatments/`
+
+#### 2. Logo made clickable — returns to home page
+Both logo instances (desktop sidebar + mobile top bar) wrapped in `<a>` links. Root-level pages link to `index.html`; treatments subpages link to `../index.html`. No JavaScript required — plain anchor tag.
+
+**Files changed:** All HTML pages in `/` and `/treatments/`
+
+#### 3. `nav-left__wordmark` removed — sidebar text below logo
+The "castleton / Dental Practice" `<p>` element below the logo in the left sidebar was removed. The equivalent wordmark in the top bar (`nav-top__wordmark`) was retained — this is the text to the right of the logo visible on desktop.
+
+**Files changed:** All HTML pages in `/` and `/treatments/`
+
+#### 4. Building photography added to hero — `index.html`
+`<!-- TBC: building photography -->` placeholder replaced with the actual building photograph. CSS updated simultaneously: placeholder background and flex-centering removed; brass border (`3px solid var(--color-brass)`) and `overflow: hidden` added.
+
+**Note:** Initial src pointed to `castleton-house.jpg` (the old illustrated logo); corrected to `castleton_outside.jpeg` after the building photograph was uploaded to `images/` by client.
+
+**Files changed:** `index.html`, `styles.css`
+
+#### 5. Hero image spacing
+Added `margin-top: var(--space-10)` (40px) to `.hero__image` to give breathing room between the "Refer a Patient" CTA and the photograph below it.
+
+**Files changed:** `styles.css`
+
+#### 6. Hero typography — fluid scaling with `clamp()`
+Hero text was fixed-size and became cramped at narrower viewport widths (e.g. half-screen iMac). All three hero text elements converted to fluid `clamp()` values:
+
+| Element | Before | After |
+|---|---|---|
+| `.hero__title` | `3.25rem` (fixed) | `clamp(1.75rem, 2.5vw + 0.5rem, 3.25rem)` |
+| `.hero__subtitle` | `1.125rem` (fixed) | `clamp(1rem, 1vw + 0.5rem, 1.125rem)` |
+| `.hero__body` | `1rem` (fixed) | `clamp(0.9rem, 0.5vw + 0.75rem, 1rem)` |
+
+Title now scales from 28px (small viewports) to 52px (full width) rather than sitting on 3 lines at intermediate sizes.
+
+**Files changed:** `styles.css`
+
+#### 7. Hero image — border sizing and alignment fixes
+Two layout bugs resolved:
+
+- **Border oversized:** `min-height: 400px` was forcing the brass border taller than the photograph, leaving an empty gap. Removed `min-height`; changed `height: 100%` → `height: auto` on `.hero__image img` so the border hugs the photo at any width.
+- **Image left-aligned:** Added `margin-inline: auto` to `.hero__image` for centred alignment on single-column (mobile/narrow) viewports.
+- **Two-column grid not working:** The 768px breakpoint grid (`1fr 1fr`) was applied to `.hero` (the `<section>`), whose only direct child is `.container` — so the grid had no effect. Moved to `.hero .container` so `hero__content` and `hero__image` become proper grid items. Margin overrides reset within the 768px breakpoint so the image fills its column naturally.
+
+**Files changed:** `styles.css`
+
+#### 8. Favicon discussion
+Discussed whether `castleton-house.png` (illustrated house, transparent background) would work as a favicon. Conclusion: likely workable — the illustration is already rendering cleanly in the browser tab at small sizes (visible in staging screenshots), and the transparent background is an advantage. Landscape aspect ratio may require a square crop. The existing `<!-- TBC: replace with Castleton favicons -->` comment remains in all `<head>` blocks pending logo finalisation.
+
+**No files changed.**
+
+---
+
 ## Session 1 — 24 March 2026
 
 **Attendees:** Ryan Bishop (ryanbishop.co.uk)
