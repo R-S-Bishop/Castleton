@@ -1,19 +1,17 @@
 /* ============================================================
    CASTLETON DENTAL PRACTICE — styles.css
-   Draft concept v3.0 | ryanbishop.co.uk
-   
-   STATUS: Draft concept — subject to change pending:
-   - Client approval of style guide v3.0
-   - Final font confirmation (--font-primary placeholder)
-   - Final logo files (SVG/EPS)
-   
-   PALETTE: Updated March 2026 — v3.0.
-   Sage Soft and Olive swapped in hierarchy.
-   Sage Soft is now primary; Olive is secondary actions/hover.
-   
-   ARCHITECTURE: Single-file CSS, mobile-first
-   All design tokens defined as custom properties in :root
-   Mirrors approach used on ryanbishop.co.uk
+   v4.0 | ryanbishop.co.uk
+
+   STATUS: v4.0 — full design reset per management direction.
+   New palette: powder blue / sage blue / dusty teal family.
+   Brass accent retired. L-shaped nav retired.
+   Standard horizontal nav reinstated.
+
+   PALETTE: Updated March 2026 — v4.0.
+   Photography placeholders active — awaiting real assets.
+
+   ARCHITECTURE: Single-file CSS, mobile-first.
+   All design tokens in :root — edit here, updates everywhere.
    ============================================================ */
 
 
@@ -24,17 +22,25 @@
 
 :root {
 
-  /* ── Colour Palette (v3.0 — approved style guide March 2026) ── */
-  --color-primary:        #8A8E75;  /* Olive — primary brand (unchanged) */
-  --color-primary-dark:   #BEC5A4;  /* Sage Soft — nav, CTAs, active states (swapped v3) */
-  --color-primary-mid:    #68604D;  /* Dark Olive — secondary actions, hover (swapped v3) */
-  --color-primary-light:  #D5C7AD;  /* Sand — warm neutral mid, tints */
-  --color-bg:             #F1EAD8;  /* Linen — page background, calm canvas */
-  --color-ink:            #1b1c17;  /* Ink — primary body text (unchanged) */
-  --color-charcoal:       #4b4b46;  /* Charcoal — secondary text (unchanged) */
-  --color-stone:          #a3a49f;  /* Stone — captions, supporting text (unchanged) */
-  --color-pale-grey:      #c6c7c3;  /* Pale Grey — borders, dividers (unchanged) */
-  --color-brass:          #B5935A;  /* Brass — accent, confirmed */
+  /* ── Colour Palette (v4.0 — reset March 2026) ── */
+  /* Primary */
+  --color-primary:        #AFC6C9;  /* Muted Sage Blue — nav, section panels */
+  --color-primary-dark:   #7FA6A8;  /* Dusty Teal — CTAs, active states, accents */
+  --color-primary-mid:    #DDE8E6;  /* Soft Powder Blue — hero, section backgrounds */
+  --color-primary-light:  #E6E7E5;  /* Cool Grey Marble — card backgrounds, hover */
+  --color-bg:             #F7F6F3;  /* Warm White — page background */
+  /* Neutral */
+  --color-soft-stone:     #D1CEC7;  /* Soft Stone — dividers, card borders */
+  --color-light-taupe:    #C4BFB6;  /* Light Taupe — secondary UI */
+  /* Accent */
+  --color-blossom:        #F4F5F2;  /* Soft Blossom White — services section */
+  --color-warm-cream:     #EFE7DC;  /* Warm Cream — testimonials, warm sections */
+  --color-brown:          #6E5C4F;  /* Natural Branch Brown — text, footer */
+  /* Text */
+  --color-ink:            #6E5C4F;  /* Branch Brown — primary body text (replaces near-black) */
+  --color-charcoal:       #4b4b46;  /* Charcoal — secondary text */
+  --color-stone:          #a3a49f;  /* Stone — captions, supporting text */
+  --color-pale-grey:      #c6c7c3;  /* Pale Grey — borders, dividers */
   --color-white:          #FFFFFF;
 
   /* ── Typography ─────────────────────────────────────────── */
@@ -106,8 +112,8 @@
 
   /* ── Borders ─────────────────────────────────────────────── */
   --border-light:  1px solid var(--color-pale-grey);
-  --border-mint:   1px solid var(--color-primary-light);
-  --border-brass:  2px solid var(--color-brass);
+  --border-light:  1px solid var(--color-soft-stone);
+  --border-card:   1px solid var(--color-primary-light);
 }
 
 
@@ -317,405 +323,251 @@ blockquote {
    Thin decorative bar — mirrors door furniture in logo
    ============================================================ */
 
-.brass-bar {
+.teal-bar {
   height: 3px;
-  background-color: var(--color-brass);
+  background-color: var(--color-primary-dark);
   width: 100%;
 }
 
-.brass-bar--narrow {
+.teal-bar--narrow {
   width: 48px;
   height: 2px;
-  background-color: var(--color-brass);
+  background-color: var(--color-primary-dark);
   margin-bottom: var(--space-6);
 }
 
 
 /* ============================================================
-   6. NAVIGATION
+   6. NAVIGATION — STANDARD HORIZONTAL
+   Logo left, nav links centre/right, CTA button right.
+   Mobile: hamburger → full-width dropdown drawer.
    ============================================================ */
 
-/* ============================================================
-   6. NAVIGATION — L-SHAPED STICKY
-   Left column (fixed, full height) + Top bar (fixed, full width
-   minus left column). Concave arc at inner junction.
-   ============================================================ */
-
-/* ── Design tokens ───────────────────────────────────────────── */
-:root {
-  --left-width:  200px;
-  --top-height:  60px;
-  --arc-radius:  56px;
-}
-
-/* ── Left column ──────────────────────────────────────────────── */
-.nav-left {
-  position: fixed;
+.nav {
+  position: sticky;
   top: 0;
-  left: 0;
-  width: var(--left-width);
-  height: 100vh;
-  background-color: var(--color-primary-dark);
-  z-index: 200;
-  display: flex;
-  flex-direction: column;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-soft-stone);
 }
 
-.nav-left__logo {
-  padding: 20px 18px 16px;
-  flex-shrink: 0;
-}
-
-.nav-left__logo img {
-  width: 140px;
-  height: auto;
-  display: block;
-}
-
-.nav-left__wordmark {
-  font-family: var(--font-primary);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: var(--color-ink);
-  margin-top: 6px;
-  padding-left: 2px;
-  display: block;
-}
-
-.nav-left__wordmark span {
-  display: block;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-primary-mid);
-  margin-top: 2px;
-}
-
-.nav-left__divider {
-  height: 2px;
-  background-color: var(--color-brass);
-  margin: 0 18px;
-  opacity: 0.5;
-  flex-shrink: 0;
-}
-
-.nav-left__body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 18px 18px;
-  overflow-y: auto;
-}
-
-.nav-left__contact-label {
-  font-family: var(--font-primary);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-primary-mid);
-  margin-bottom: 10px;
-}
-
-.nav-left__contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 7px;
-  font-family: var(--font-primary);
-  font-size: 11.5px;
-  color: var(--color-ink);
-  line-height: 1.5;
-  margin-bottom: 9px;
-}
-
-.nav-left__contact-item svg {
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: var(--color-primary-mid);
-}
-
-.nav-left__contact-item a {
-  color: var(--color-ink);
-  text-decoration: none;
-  transition: color 150ms ease;
-}
-
-.nav-left__contact-item a:hover { color: var(--color-primary-mid); }
-
-.nav-left__hours {
-  font-family: var(--font-primary);
-  font-size: 11px;
-  color: var(--color-charcoal);
-  line-height: 1.7;
-  padding-left: 21px;
-  margin-bottom: 4px;
-}
-
-.nav-left__ctas {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.nav-left__btn {
-  display: block;
-  font-family: var(--font-primary);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-align: center;
-  padding: 10px 14px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: all 150ms ease;
-  cursor: pointer;
-}
-
-.nav-left__btn--primary {
-  background-color: var(--color-primary-mid);
-  color: var(--color-white);
-  border: 2px solid var(--color-primary-mid);
-}
-
-.nav-left__btn--primary:hover {
-  background-color: var(--color-ink);
-  border-color: var(--color-ink);
-}
-
-.nav-left__btn--secondary {
-  background-color: transparent;
-  color: var(--color-primary-mid);
-  border: 2px solid var(--color-primary-mid);
-}
-
-.nav-left__btn--secondary:hover {
-  background-color: var(--color-primary-mid);
-  color: var(--color-white);
-}
-
-/* ── Arc — concave road-turn curve at inner junction ──────────── */
-.nav-arc {
-  position: fixed;
-  top: calc(var(--top-height) - 2px);
-  left: calc(var(--left-width) - 2px);
-  width: calc(var(--arc-radius) + 2px);
-  height: calc(var(--arc-radius) + 2px);
-  background: radial-gradient(
-    circle at 100% 100%,
-    transparent calc(var(--arc-radius) - 0.5px),
-    var(--color-primary-dark) calc(var(--arc-radius) + 0.5px)
-  );
-  z-index: 201;
-  pointer-events: none;
-}
-
-/* ── Top bar ──────────────────────────────────────────────────── */
-.nav-top {
-  position: fixed;
-  top: 0;
-  left: var(--left-width);
-  right: 0;
-  height: var(--top-height);
-  background-color: var(--color-primary-dark);
-  z-index: 200;
+.nav__inner {
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  gap: 16px;
+  justify-content: space-between;
+  padding-block: var(--space-4);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+  gap: var(--space-6);
 }
 
-.nav-top__brand { display: flex; align-items: center; flex-shrink: 0; }
-
-.nav-top__wordmark { display: flex; flex-direction: column; line-height: 1.1; }
-
-.nav-top__wordmark-name {
+.nav__logo {
   font-family: var(--font-primary);
-  font-size: 21px;
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  color: var(--color-ink);
-}
-
-.nav-top__wordmark-sub {
-  font-family: var(--font-primary);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-primary-mid);
-}
-
-.nav-top__divider {
-  width: 1px;
-  height: 26px;
-  background-color: var(--color-brass);
-  opacity: 0.5;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-light);
+  color: var(--color-brown);
+  letter-spacing: var(--tracking-wide);
+  text-decoration: none;
   flex-shrink: 0;
 }
 
-.nav-top__links {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  flex: 1;
-  list-style: none;
+.nav__logo img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
-.nav-top__links a {
-  font-family: var(--font-primary);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: var(--color-ink);
-  padding: 6px 11px;
-  border-radius: 4px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background-color 150ms ease, color 150ms ease;
-}
-
-.nav-top__links a:hover,
-.nav-top__links a.active {
-  background-color: var(--color-primary-mid);
-  color: var(--color-white);
-}
-
-/* ── Page content offset ──────────────────────────────────────── */
-.page-main {
-  margin-left: var(--left-width);
-  padding-top: var(--top-height);
-}
-
-/* ── Hamburger (mobile only) ──────────────────────────────────── */
-.nav-hamburger {
+.nav__links {
   display: none;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav__links a {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 4px;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav__links a:hover,
+.nav__links a.active {
+  color: var(--color-primary-dark);
+}
+
+.nav__cta {
+  display: none;
+  flex-shrink: 0;
+}
+
+/* Hamburger — mobile */
+.nav__hamburger {
+  display: flex;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  padding: 8px;
-  margin-left: auto;
+  padding: var(--space-2);
   background: none;
   border: none;
 }
 
-.nav-hamburger span {
+.nav__hamburger span {
   display: block;
   width: 22px;
   height: 2px;
-  background-color: var(--color-ink);
+  background-color: var(--color-brown);
   border-radius: 2px;
-  transition: transform 200ms ease, opacity 200ms ease;
+  transition: var(--transition-base);
 }
 
-/* Hamburger → × when menu is open */
-.menu-open .nav-hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.menu-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.menu-open .nav-hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-/* Overlay — dims content behind open drawer */
-.nav-overlay {
+/* Mobile drawer */
+.nav__drawer {
   display: none;
   position: fixed;
-  inset: 0;
-  background: rgba(27, 28, 23, 0.45);
-  z-index: 198;
-  cursor: pointer;
-}
-.menu-open .nav-overlay { display: block; }
-
-.nav-top__logo-mobile { display: none; }
-
-/* ── Mobile drawer ────────────────────────────────────────────── */
-.nav-mobile-drawer {
-  display: none;
-  position: fixed;
-  top: var(--top-height);
+  top: 0;
   left: 0;
   right: 0;
-  background-color: var(--color-primary-dark);
-  z-index: 199;
-  padding: 20px;
-  transform: translateY(-110%);
+  bottom: 0;
+  background-color: var(--color-primary);
+  z-index: 200;
+  flex-direction: column;
+  padding: var(--space-6);
+  transform: translateY(-100%);
   opacity: 0;
   transition: transform 250ms ease, opacity 250ms ease;
   pointer-events: none;
-  box-shadow: 0 8px 24px rgba(27,28,23,0.12);
 }
 
-.nav-mobile-drawer.open {
+.nav__drawer.open {
   transform: translateY(0);
   opacity: 1;
   pointer-events: all;
 }
 
-.nav-mobile-drawer a {
+.nav__drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--color-brown);
+  margin-bottom: var(--space-6);
+  padding: var(--space-2);
+}
+
+.nav__drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.nav__drawer-links a {
   display: block;
   font-family: var(--font-primary);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--color-ink);
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(104,96,77,0.15);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  color: var(--color-brown);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid rgba(110, 92, 79, 0.15);
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-.nav-mobile-drawer > a:last-of-type { border-bottom: none; }
+.nav__drawer-links a:hover { color: var(--color-primary-dark); }
 
-.nav-drawer__ctas {
+.nav__drawer-ctas {
   display: flex;
-  gap: 10px;
-  margin-top: 16px;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
 }
 
-.nav-drawer__ctas a {
-  flex: 1;
-  text-align: center;
-  border-bottom: none !important;
-  padding: 10px !important;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.nav-drawer__ctas a:first-child {
-  background-color: var(--color-primary-mid);
-  color: var(--color-white) !important;
-}
-
-.nav-drawer__ctas a:last-child {
-  border: 2px solid var(--color-primary-mid) !important;
-  color: var(--color-primary-mid) !important;
-}
-
-/* ── Mobile breakpoint — left column collapses ────────────────── */
-@media (max-width: 1023px) {
-  .nav-left, .nav-arc { display: none; }
-
-  .nav-top { left: 0; padding: 0 20px; }
-
-  .nav-top__brand { display: none; }
-  .nav-top__divider { display: none; }
-
-  .nav-top__logo-mobile {
+/* Tablet+ — show links, hide hamburger */
+@media (min-width: 768px) {
+  .nav__links {
     display: flex;
-    align-items: center;
-    margin-right: auto;
   }
-
-  .nav-top__logo-mobile img { height: 36px; width: auto; }
-
-  .nav-top__links { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-mobile-drawer { display: block; }
-
-  .page-main { margin-left: 0; }
+  .nav__cta {
+    display: inline-flex;
+  }
+  .nav__hamburger {
+    display: none;
+  }
 }
 
 
 
+
+
+
+
+/* ============================================================
+   PHOTOGRAPHY PLACEHOLDERS
+   Styled placeholder divs — awaiting real photography.
+   Remove these styles and the placeholder HTML once
+   photography assets are supplied by Castleton Dental.
+   ============================================================ */
+
+.photo-placeholder {
+  background-color: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-placeholder::after {
+  content: 'Photography TBC';
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-primary-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.photo-placeholder--hero {
+  width: 100%;
+  height: 420px;
+}
+
+.photo-placeholder--card {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.photo-placeholder--portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-width: 360px;
+}
+
+.photo-placeholder--about {
+  width: 100%;
+  height: 480px;
+}
+
+@media (min-width: 1024px) {
+  .photo-placeholder--hero {
+    height: 560px;
+  }
+}
 
 
 /* ============================================================
@@ -723,7 +575,7 @@ blockquote {
    ============================================================ */
 
 .hero {
-  background-color: var(--color-bg);
+  background-color: var(--color-primary-mid);
   padding-block: var(--space-20);
   position: relative;
   overflow: hidden;
@@ -744,7 +596,7 @@ blockquote {
 }
 
 .hero__title {
-  font-size: clamp(1.75rem, 2.5vw + 0.5rem, 3.25rem);
+  font-size: var(--text-hero);
   font-weight: var(--weight-light);
   color: var(--color-ink);
   line-height: var(--leading-tight);
@@ -753,14 +605,14 @@ blockquote {
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+  font-size: var(--text-md);
   color: var(--color-charcoal);
   line-height: var(--leading-loose);
   margin-bottom: var(--space-4);
 }
 
 .hero__body {
-  font-size: clamp(0.9rem, 0.5vw + 0.75rem, 1rem);
+  font-size: var(--text-base);
   color: var(--color-ink);
   margin-bottom: var(--space-10);
 }
@@ -773,17 +625,16 @@ blockquote {
 }
 
 .hero__image {
+  /* Placeholder — awaiting photography from client */
+  background-color: var(--color-primary-light);
   border-radius: var(--border-radius);
-  border: 3px solid var(--color-brass);
-  overflow: hidden;
-  margin-top: var(--space-10);
-  margin-inline: auto;
-}
-
-.hero__image img {
-  width: 100%;
-  height: auto;
-  display: block;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-dark);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
 }
 
 
@@ -833,15 +684,15 @@ blockquote {
 }
 
 /* Brass accent */
-.btn--brass {
-  background-color: var(--color-brass);
+.btn--teal {
+  background-color: var(--color-primary);
   color: var(--color-white);
-  border: 2px solid var(--color-brass);
+  border: 2px solid var(--color-primary-dark);
 }
 
-.btn--brass:hover {
+.btn--teal:hover {
   background-color: transparent;
-  color: var(--color-brass);
+  color: var(--color-primary-dark);
 }
 
 /* Ghost / outline */
@@ -988,12 +839,12 @@ blockquote {
 
 .testimonial__quote::before {
   content: '\201C';
-  color: var(--color-brass);
+  color: var(--color-primary-dark);
 }
 
 .testimonial__quote::after {
   content: '\201D';
-  color: var(--color-brass);
+  color: var(--color-primary-dark);
 }
 
 .testimonial__attribution {
@@ -1004,7 +855,7 @@ blockquote {
 }
 
 .testimonial__stars {
-  color: var(--color-brass);
+  color: var(--color-primary-dark);
   font-size: var(--text-md);
   margin-bottom: var(--space-2);
 }
@@ -1016,7 +867,7 @@ blockquote {
 
 .referral {
   background-color: var(--color-white);
-  border-top: 3px solid var(--color-brass);
+  border-top: 3px solid var(--color-primary-dark);
   padding: var(--space-12);
   border-radius: var(--border-radius);
 }
@@ -1144,7 +995,7 @@ blockquote {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   font-weight: var(--weight-light);
-  color: var(--color-primary);
+  color: var(--color-bg);
   letter-spacing: var(--tracking-wide);
   display: flex;
   align-items: center;
@@ -1155,7 +1006,7 @@ blockquote {
 /* Brass separator — mirrors door furniture */
 .footer__logo::after {
   content: '◆';
-  color: var(--color-brass);
+  color: var(--color-primary-dark);
   font-size: var(--text-xs);
 }
 
@@ -1233,9 +1084,9 @@ blockquote {
   margin-block: var(--space-8);
 }
 
-.divider--brass {
+.divider--teal {
   height: 2px;
-  background-color: var(--color-brass);
+  background-color: var(--color-primary-dark);
   border: none;
   width: 48px;
   margin-block: var(--space-6);
@@ -1283,16 +1134,11 @@ blockquote {
     padding-block: var(--space-16);
   }
 
-  .hero .container {
+  .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
     align-items: center;
-  }
-
-  .hero__image {
-    margin-top: 0;
-    margin-inline: 0;
   }
 
   .grid--2,
