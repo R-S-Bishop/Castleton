@@ -405,7 +405,7 @@ blockquote {
   color: var(--color-primary-dark);
 }
 
-.nav__cta {
+.nav .nav__cta {
   display: none;
   flex-shrink: 0;
 }
@@ -499,7 +499,7 @@ blockquote {
   .nav__links {
     display: flex;
   }
-  .nav__cta {
+  .nav .nav__cta {
     display: inline-flex;
   }
   .nav__hamburger {
@@ -576,17 +576,26 @@ blockquote {
 
 .hero-banner {
   width: 100%;
-  max-height: 65vh;
-  overflow: hidden;
   line-height: 0;
 }
 
 .hero-banner img {
   width: 100%;
-  height: 65vh;
-  object-fit: cover;
-  object-position: center 60%;
+  height: auto;
   display: block;
+}
+
+@media (min-width: 768px) {
+  .hero-banner {
+    max-height: 65vh;
+    overflow: hidden;
+  }
+
+  .hero-banner img {
+    height: 65vh;
+    object-fit: cover;
+    object-position: center 60%;
+  }
 }
 
 .hero {
