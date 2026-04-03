@@ -130,23 +130,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-  <div class="nav__contact-bar">
-    <div class="container">
-      <a href="tel:01252715576">01252 715576</a>
-      &nbsp;·&nbsp;
-      <a href="mailto:info@castletondental.co.uk">info@castletondental.co.uk</a>
-      &nbsp;·&nbsp;
-      Mon–Thu 08:30–17:00 &nbsp;|&nbsp; Fri 08:00–13:30
-    </div>
-  </div>
-
+  <!-- Navigation -->
   <nav class="nav" aria-label="Main navigation">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">castleton</a>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="nav__inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo">
+        <img src="images/castleton-logo.png" alt="Castleton Dental Practice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span style="display:none">castleton</span>
+      </a>
+
+      <!-- Desktop nav links -->
       <ul class="nav__links" role="list">
+        <li><a href="index.html">Home</a></li>
         <li><a href="treatments/index.html">What We Do</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="prices.html" class="active">Prices</a></li>
@@ -154,10 +150,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="testimonials.html">Testimonials</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+
+      <!-- Desktop CTA -->
       <a href="https://uk.dentalhub.online/soe/new/The%20Castleton%20Dental%20Practice%20Ltd?pid=UKCSL01"
-         class="btn btn--primary nav__cta" target="_blank" rel="noopener">Book Online</a>
+         class="btn btn--primary nav__cta"
+         target="_blank" rel="noopener">
+        Book an Appointment
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </button>
+
     </div>
   </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav__drawer" id="nav-drawer" style="display:none" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+    <button class="nav__drawer-close" id="nav-drawer-close" aria-label="Close menu">✕</button>
+    <ul class="nav__drawer-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="treatments/index.html">What We Do</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="prices.html">Prices</a></li>
+      <li><a href="referrals.html">Referrals</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__drawer-ctas">
+      <a href="https://uk.dentalhub.online/soe/new/The%20Castleton%20Dental%20Practice%20Ltd?pid=UKCSL01"
+         class="btn btn--primary" target="_blank" rel="noopener">
+        Book an Appointment
+      </a>
+      <a href="referrals.html" class="btn btn--ghost">Refer a Patient</a>
+    </div>
+  </div>
+
   <main>
 
     <section class="section section--default">
@@ -527,14 +556,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 
   <script>
-    const hamburger = document.querySelector('.nav__hamburger');
-    const nav = document.querySelector('.nav');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('nav--open');
-        hamburger.setAttribute('aria-expanded', isOpen);
-      });
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer    = document.getElementById('nav-drawer');
+    const closeBtn  = document.getElementById('nav-drawer-close');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      drawer.style.display = 'flex';
+      hamburger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => { if (!drawer.classList.contains('open')) drawer.style.display = 'none'; }, 260);
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+    if (drawer)    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
   </script>
 </body>
 </html>
