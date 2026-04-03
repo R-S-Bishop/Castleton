@@ -1,3 +1,6 @@
+/* Google Fonts — Cormorant Garamond (display headings) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 /* ============================================================
    CASTLETON DENTAL PRACTICE — styles.css
    v4.0 | ryanbishop.co.uk
@@ -44,11 +47,9 @@
   --color-white:          #FFFFFF;
 
   /* ── Typography ─────────────────────────────────────────── */
-  /* TBC: --font-primary awaiting client confirmation          */
-  /* Placeholder: Trebuchet MS (geometric sans, close to       */
-  /* wordmark character). Replace single variable when ready.  */
-  --font-primary:   'Trebuchet MS', 'Gill Sans', Arial, sans-serif;
-  --font-body:      Georgia, 'Times New Roman', serif;
+  --font-heading:   'Cormorant Garamond', 'Georgia', serif;  /* Display headings h1–h6 */
+  --font-primary:   'Trebuchet MS', 'Gill Sans', Arial, sans-serif;  /* Nav, UI labels, buttons */
+  --font-body:      Georgia, 'Times New Roman', serif;  /* Body text */
 
   /* Type scale */
   --text-xs:    0.75rem;   /* 12px — fine print */
@@ -142,6 +143,10 @@ body {
   line-height: var(--leading-normal);
   color: var(--color-ink);
   background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03 0.018' numOctaves='5' seed='14' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.78 0 0 0 0 0.77 0 0 0 0 0.75 0 0 0 0.80 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-size: 700px 700px;
+  background-repeat: repeat;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -188,7 +193,7 @@ select {
    ============================================================ */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-primary);
+  font-family: var(--font-heading);
   font-weight: var(--weight-light);
   line-height: var(--leading-tight);
   color: var(--color-ink);
@@ -283,6 +288,9 @@ blockquote {
 
 .section {
   padding-block: var(--space-12);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03 0.018' numOctaves='5' seed='14' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.78 0 0 0 0 0.77 0 0 0 0 0.75 0 0 0 0.80 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-size: 700px 700px;
+  background-repeat: repeat;
 }
 
 .section--lg {
@@ -317,6 +325,23 @@ blockquote {
 .text-center { text-align: center; }
 .text-left   { text-align: left; }
 
+
+/* ============================================================
+   4b. MARBLE TEXTURE UTILITY
+   Apply .section--marble to any section for subtle stone texture.
+   Uses inline SVG feTurbulence (Perlin noise) — no image file.
+   Tune the alpha value (0.18) in feColorMatrix to adjust intensity:
+   0.10 = barely visible grain | 0.18 = soft limestone | 0.30 = visible marble
+   ============================================================ */
+
+.section--marble {
+  /* Marble texture layers above background-color automatically in CSS */
+  /* Tune the last value in feColorMatrix (currently 0.45) to adjust intensity: */
+  /* 0.20 = barely-there grain | 0.45 = soft limestone | 0.70 = visible marble  */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03 0.018' numOctaves='5' seed='14' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.78 0 0 0 0 0.77 0 0 0 0 0.75 0 0 0 0.80 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-size: 700px 700px;
+  background-repeat: repeat;
+}
 
 /* ============================================================
    5. BRASS ACCENT BAR
@@ -606,7 +631,7 @@ blockquote {
 }
 
 .hero__content {
-  max-width: 640px;
+  max-width: none;
 }
 
 .hero__eyebrow {
@@ -1160,10 +1185,7 @@ blockquote {
   }
 
   .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
-    align-items: center;
+    display: block;
   }
 
   .grid--2,
