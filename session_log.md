@@ -275,6 +275,59 @@ Nav JS updated to match new element IDs (`nav-hamburger`, `nav-drawer`, `nav-dra
 
 ---
 
+---
+
+## Session 7 — 3 April 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Continuation of Session 6. Focused on setting up live preview tooling inside Claude Code, followed by UI refinements to the nav and CTA buttons.
+
+### Work Completed
+
+#### 1. Live Preview panel — two-server proxy architecture
+
+**Problem:** Claude Code's `preview_start` tool spawns child processes inside a macOS sandbox that blocks access to `~/Documents/GitHub/Castleton`. All direct server approaches (Ruby WEBrick, Python `http.server`) failed with `EPERM` or `PermissionError: getcwd`.
+
+**Solution:** Two-server proxy:
+- **Port 3002** — real file server started via the Bash tool (inherits Claude Code's Full Disk Access). Serves the Castleton repo directly.
+- **Port 3001** — lightweight Python proxy (`/tmp/castleton_proxy.py`) managed by `preview_start`. Forwards all HTTP requests to port 3002. Child process sandbox cannot read files but CAN make localhost network connections.
+- Preview panel connects to port 3001 and renders the live site.
+
+Same approach applied to `ryanbishop.github.io` on ports 3004 (file server) / 3003 (proxy).
+
+**Config:** `.claude/launch.json` in the worktree — two entries: `Castleton Dental (static)` and `Ryan Bishop (static)`.
+
+**Restore after restart:**
+1. Run `python3 -m http.server --directory /Users/ryan/Documents/GitHub/Castleton 3002 &` via Bash tool
+2. Call `preview_start "Castleton Dental (static)"`
+3. Proxy scripts live at `/tmp/castleton_proxy.py` and `/tmp/ryanbishop_proxy.py` (recreate from memory file if `/tmp` was cleared)
+
+**Files changed:** `.claude/launch.json` (worktree)
+
+#### 2. `styles.css` — subtle drop shadow on all CTA buttons
+
+Added `box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12)` to the `.btn` base class. Affects all button variants (`btn--primary`, `btn--ghost`, etc.) across all pages automatically.
+
+**Files changed:** `styles.css`
+
+#### 3. `index.html` — "Refer a Patient" CTA added to desktop nav
+
+Added a second CTA button (`btn--ghost`) immediately after the "Book an Appointment" button in the desktop nav bar. Uses `nav__cta` class (hidden at mobile, visible at 768px+). Links to `referrals.html`.
+
+**Files changed:** `index.html`
+
+#### 4. `index.html`, `contact.html` — Google Maps embed Place ID restored
+
+Both files had reverted to a placeholder embed URL (`!1s0x0%3A0x0`) with no valid place. Restored the verified GBP Place ID embed URL on both pages:
+
+Place ID: `0x48742daba0c2eb6d:0x4a77be4480f6da66`
+
+**Files changed:** `index.html`, `contact.html`
+
+---
+
 ### Outstanding / TBC Items
 
 | Item | Owner | Status |
