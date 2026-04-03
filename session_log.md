@@ -328,6 +328,57 @@ Place ID: `0x48742daba0c2eb6d:0x4a77be4480f6da66`
 
 ---
 
+---
+
+## Session 8 — 3 April 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Continuation of Session 7 (same day). UI refinements: font upgrade, marble texture, mobile layout fixes, and nav improvements.
+
+### Work Completed
+
+#### 1. `styles.css` — Cormorant Garamond display font
+
+Added Google Fonts `@import` for Cormorant Garamond (all weights 300–700, roman + italic). Introduced `--font-heading` design token applied to all `h1–h6`. `--font-primary` retained for nav, buttons, and UI labels.
+
+Font identified from client-supplied inspiration mockup (luxury dental aesthetic). Cormorant Garamond matched on: calligraphic stroke quality, diagonal stress axis, bracketed serifs, moderate x-height.
+
+**Files changed:** `styles.css`
+
+#### 2. `styles.css` — SVG marble texture (feTurbulence)
+
+Inline SVG `feTurbulence` (`fractalNoise`) applied as `background-image` on three levels:
+- `body` — covers gaps between sections
+- `.section` base class — all sections automatically textured
+- `.section--marble` — utility class for targeted use
+
+Key parameters: `baseFrequency='0.03 0.018'`, `numOctaves='5'`, `stitchTiles='stitch'` (seamless tiling), `feColorMatrix` alpha `0.80` (strong effect across all section colours). No external image file required.
+
+The `stitchTiles='stitch'` attribute fixed a visible vertical seam at 700px tile boundaries.
+
+**Files changed:** `styles.css`, `index.html`
+
+#### 3. `styles.css` — Hero layout fix
+
+**Problem:** `.hero` had `display: grid; grid-template-columns: 1fr 1fr` at 768px+. After the hero restructure (building photo moved to `.hero-banner`, team photo removed pending client supply), only `.container` remained as a child — occupying one grid cell and leaving the right half of the section empty.
+
+**Fix:** Changed `.hero` to `display: block` at 768px+. Removed `max-width: 640px` from `.hero__content` so text spans the full container width.
+
+**Files changed:** `styles.css`
+
+#### 4. `styles.css`, `index.html` — Nav + button improvements
+
+- Added `Refer a Patient` ghost CTA button to desktop nav alongside Book an Appointment
+- Fixed nav CTA specificity bug (`.nav .nav__cta` vs `.btn` both setting `display`)
+- Added `box-shadow: 0 2px 8px rgba(0,0,0,0.12)` to all `.btn` variants
+- Hero image: `height: auto` at mobile (full building visible); `65vh` + `object-fit: cover` at 768px+
+
+**Files changed:** `styles.css`, `index.html`
+
+---
+
 ### Outstanding / TBC Items
 
 | Item | Owner | Status |
