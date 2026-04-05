@@ -379,6 +379,49 @@ The `stitchTiles='stitch'` attribute fixed a visible vertical seam at 700px tile
 
 ---
 
+---
+
+## Session 9 — 5 April 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Continuation of Session 8. Focus on logo refresh — replacing the nav logo with new branded assets and achieving a transparent background.
+
+### Work Completed
+
+#### 1. Nav logo — replaced with `Castleton_sage_transparent.png` across all 15 pages
+
+Two candidate files assessed from Desktop:
+- `castleton_logo_vector.svg` — JPEG-in-SVG wrapper, no `viewBox`, white background baked in
+- `Castleton_sage.svg` — JPEG-in-SVG wrapper, has `viewBox="0 0 1152 768"`, still white background
+- `Castleton_sage.png` — RGB PNG (no alpha), white background baked in
+
+**Solution:** White background removed programmatically using Python Pillow. Pixels ≥ 240 brightness set to fully transparent; pixels 200–240 brightness blended to partial transparency for smooth anti-aliased edges. Output saved as `Castleton_sage_transparent.png` (RGBA, 1536×1024).
+
+All 15 HTML pages updated (8 root pages + 7 treatment subpages) to reference `images/Castleton_sage_transparent.png`.
+
+**Files added:** `images/Castleton_sage_transparent.png`, `images/Castleton_sage.svg`, `images/castleton_logo_vector.svg`
+
+**Files changed:** All HTML pages
+
+#### 2. `styles.css` — Nav logo sizing increased, nav breathing room improved
+
+| Property | Before | After |
+|---|---|---|
+| `.nav__logo img` height | `48px` | `100px` |
+| `.nav__logo img` max-width | `160px` | `360px` |
+| `.nav__inner` padding-left | `var(--space-6)` 24px | `var(--space-10)` 40px |
+| `.nav__inner` padding-right | `var(--space-6)` 24px | `var(--space-8)` 32px |
+
+Nav bar height grows naturally to accommodate the larger logo. Building illustration and "castleton / DENTAL PRACTICE" text clearly legible at desktop widths.
+
+**Files changed:** `styles.css`
+
+> ⚠️ **Note for Holly:** All three logo files are JPEGs wrapped in SVG containers — not true vector artwork. Recommend requesting a proper SVG export (with vector paths) from the designer for maximum crispness at all sizes and screen densities.
+
+---
+
 ### Outstanding / TBC Items
 
 | Item | Owner | Status |
