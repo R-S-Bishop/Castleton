@@ -422,6 +422,47 @@ Nav bar height grows naturally to accommodate the larger logo. Building illustra
 
 ---
 
+---
+
+## Session 10 — 13 April 2026
+
+**Attendees:** Ryan Bishop (ryanbishop.co.uk)
+
+### Context
+Continuation of Session 9 (same day). Focus on favicons and Style Guide workflow improvements.
+
+### Work Completed
+
+#### 1. Favicons — complete set implemented across all 21 pages
+
+Six favicon files created externally (using the house illustration logo) and deployed to the repo root:
+
+| File | Purpose |
+|---|---|
+| `favicon.ico` | Legacy browsers, browser tab fallback |
+| `favicon-16x16.png` | Standard browser tab |
+| `favicon-32x32.png` | High-DPI browser tab, taskbar |
+| `apple-touch-icon.png` | iOS home screen shortcut |
+| `android-chrome-192x192.png` | Android home screen |
+| `android-chrome-512x512.png` | Android splash screen / PWA |
+| `site.webmanifest` | PWA manifest — name, short name, theme colour |
+
+`site.webmanifest` updated: `name: "Castleton Dental Practice"`, `short_name: "Castleton"`, `theme_color: "#7FA6A8"` (Dusty Teal), `background_color: "#F7F6F3"` (Warm White).
+
+All 21 HTML pages updated — old placeholder favicon block (TBC) replaced with complete 5-tag set. Root pages reference files directly; treatment subpages use `../` prefix.
+
+**Files added:** `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png`, `site.webmanifest`
+
+**Files changed:** All HTML pages
+
+#### 2. Style Guide — updated in Claude Code
+
+Established workflow: Castleton Style Guide v(#).docx is now updated directly within Claude Code sessions (unpack → edit XML → repack) rather than manually in Chat. Confirmed two-document close checklist for every session:
+1. **Castleton Style Guide v(#).docx** — Desktop path above
+2. **session_log.md** — this file
+
+---
+
 ### Outstanding / TBC Items
 
 | Item | Owner | Status |
